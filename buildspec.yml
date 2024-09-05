@@ -3,15 +3,19 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Installing dependencies
-      - npm install
+      - echo Installing dependencies...
+      - npm install  # Or use yarn if your project uses it
   build:
     commands:
-      - echo Build started on `date`
-      - npm run build
-      - echo Build completed on `date`
+      - echo Building the project...
+      - npm run build  # This runs the build script in your package.json
+  post_build:
+    commands:
+      - echo Invalidate CloudFront cache
+      - aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"
+
 artifacts:
   files:
-    - '**/*'
-  base-directory: build
-  discard-paths: yes
+    - '**/*'  # You can change this to your specific build output
+  base-directory: build  # This should be the directory where your build artifacts are located
+  discard-paths: no
