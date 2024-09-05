@@ -11,8 +11,11 @@ phases:
       - npm run build  # This runs the build script in your package.json
   post_build:
     commands:
-      - echo Invalidate CloudFront cache
+      - echo "Check AWS CLI version"
+      - aws --version
+      - echo "Invalidate CloudFront cache"
       - aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"
+
 
 artifacts:
   files:
