@@ -51,6 +51,11 @@ const StyledPostContent = styled.div`
 `;
 
 const PostTemplate = ({ data, location }) => {
+  if (!data.markdownRemark) {
+    console.error('No post found for this path');
+    return null;
+  }
+  
   const { frontmatter, html } = data.markdownRemark;
   const { title, date, tags } = frontmatter;
 
@@ -112,3 +117,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+
