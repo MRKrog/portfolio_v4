@@ -6,6 +6,12 @@ companyFull: 'Winter Park - Ikon'
 location: 'Winter Park, CO'
 range: 'July 2013 - January 2017'
 url: 'https://www.winterparkresort.com/'
+skills:
+  - JavaScript
+  - React
+  - Three.js
+  - Node.js
+  - UX/UI
 ---
 
 - Managed the long-term vision and maintenance of all resort-affiliated websites.

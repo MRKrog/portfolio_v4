@@ -89,6 +89,7 @@ const StyledTabButton = styled.button`
   // font-family: var(--m-font-title);
   font-family: var(--m-font-sub-title);
   font-size: var(--fz-xs);
+  font-weight: bold;
   text-align: left;
   white-space: nowrap;
   // text-transform: uppercase;
@@ -189,11 +190,11 @@ const StyledTabPanel = styled.div`
         position: relative;
         margin-bottom: 10px;
         padding-left: 20px;
-        // font-family: var(--font-mono);
-        font-size: var(--fz-xs);
+        font-family: var(--font-mono);
+        // font-size: var(--fz-xs);
 
         &:before {
-          content: '▹';
+          content: '•';
           position: absolute;
           left: 0;
           color: var(--green);
@@ -319,7 +320,7 @@ const Jobs = () => {
             jobsData.map(({ node }, i) => {
               const { frontmatter, html } = node;
               const { title, url, company, range, companyFull, skills } = frontmatter;
-              console.log('skills::', skills)
+              
               const nodeRef = React.createRef(null)
 
               return (

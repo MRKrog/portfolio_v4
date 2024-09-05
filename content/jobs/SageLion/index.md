@@ -6,6 +6,12 @@ companyFull: 'Sage Lion Media'
 location: 'Denver, CO'
 range: 'October 2018 - November 2018'
 url: 'https://sagelionmedia.com/'
+skills:
+  - JavaScript
+  - React
+  - Three.js
+  - Node.js
+  - UX/UI
 ---
 
 - Worked at a digital agency specializing in web development, eCommerce, and marketing.
