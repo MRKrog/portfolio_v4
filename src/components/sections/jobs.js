@@ -297,6 +297,7 @@ const Jobs = () => {
           {jobsData &&
             jobsData.map(({ node }, i) => {
               const { company } = node.frontmatter;
+
               return (
                 <StyledTabButton
                   key={i}
@@ -318,7 +319,8 @@ const Jobs = () => {
         <StyledTabPanels>
           {jobsData &&
             jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
+              // const { frontmatter, html } = node;
+              const { frontmatter = {}, html } = node || {};
               const { title, url, company, range, companyFull, skills } = frontmatter;
               
               const nodeRef = React.createRef(null)
