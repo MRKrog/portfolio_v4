@@ -3,22 +3,26 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo Installing dependencies...
-      - yarn install  # Or use yarn if your project uses it
+      - echo "Installing dependencies..."
+      - yarn install  # Or `npm install` if you're using npm
+
   build:
     commands:
-      - echo Building the project...
-      - npm run build  # This runs the build script in your package.json
+      - echo "Building the Gatsby project..."
+      - yarn build  # Or `npm run build` if you're using npm
+      - echo "Listing directories and files after build"
+      - ls -la  # Lists the root folder and its contents
+      - ls -la public/  # List contents of the Gatsby output folder
+
   post_build:
     commands:
-      - echo "Check AWS CLI version"
+      - echo "Checking AWS CLI version"
       - aws --version
-      - echo "Invalidate CloudFront cache"
+      - echo "Invalidating CloudFront cache"
       - aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"
-
 
 artifacts:
   files:
-    - '**/*'  # You can change this to your specific build output
-  base-directory: build  # This should be the directory where your build artifacts are located
+    - '**/*'  # This pattern includes all files in the base-directory
+  base-directory: public  # This is where Gatsby outputs its build files
   discard-paths: no
