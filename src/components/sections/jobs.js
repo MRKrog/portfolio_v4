@@ -16,6 +16,19 @@ const StyledJobsSection = styled.section`
     left: 0;
   }
 
+  .test-circle {
+    bottom: 0;
+    position: absolute;
+    width: 62vw;
+    height: 83vh;
+    border-radius: 50%;
+    background: #ffffff8f;
+    left: 0;
+    opacity: .3;
+    z-index: -1;
+    transform: scaleX(0.8) scaleY(0.86) rotate(131deg);
+  }
+
   .inner {
     display: flex;
     flex-direction: column;
@@ -289,6 +302,9 @@ const Jobs = () => {
 
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
+
+      <div className="test-circle"></div>
+       
       <h2 className="m-section-title">day job</h2>
 
       <div className="inner">

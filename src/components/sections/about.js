@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
+import meImg from '../../images/me.jpg';
+// import meImg from '../../images/portfolio_me.jpg';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -31,9 +33,9 @@ const StyledAboutSection = styled.section`
   }
 
   h2 {
-    top: -1rem;
+    top: 1rem;
     right: 0;
-    z-index: 10;
+    z-index: -1;
     // color: transparent; /* Make the fill color transparent */
     // -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); 
     // mix-blend-mode: overlay;
@@ -57,9 +59,10 @@ const StyledAboutSection = styled.section`
 
 const StyledPic = styled.div`
   position: relative;
-  // max-width: 400px;
   width: 100%;
   z-index: -1;
+  display: flex;
+  align-items: center;
 
   @media (max-width: 768px) {
     margin: 50px auto 0;
@@ -72,7 +75,6 @@ const StyledPic = styled.div`
     position: relative;
     width: 100%;
     border-radius: var(--border-radius);
-    // background-color: var(--m-light-black);
     background-color: #cccccc;
 
     .img {
@@ -168,8 +170,6 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript', 'React', 'Three.js', 'Node.js', 'UX/UI'];
-
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
       
@@ -206,26 +206,14 @@ const About = () => {
             </p>
 
           </div>
-
-          {/* <div className="next-button">
-              <button  
-              // onClick={() => setShowMore(!showMore)}
-            >
-            More
-            </button>
-          </div> */}
-
-          {/* <p>Here are a few technologies I’ve been working with recently:</p>
-          <ul className="skills-list">
-            {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
-          </ul> */}
         </StyledText>
 
         <StyledPic>
           <div className="wrapper">
             <StaticImage
               className="img"
-              src="../../images/me.jpg"
+              src={'../../images/portfolio_me.jpg'}
+              // src={'../../images/me.jpg'}
               width={300}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
