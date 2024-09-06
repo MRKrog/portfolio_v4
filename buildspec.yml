@@ -10,9 +10,9 @@ phases:
     commands:
       - echo "Building the Gatsby project..."
       - yarn build  # Or `npm run build` if you're using npm
-      - echo "Listing directories and files after build"
-      - ls -la  # Lists the root folder and its contents
-      - ls -la public/  # List contents of the Gatsby output folder
+      - echo "Zipping build output..."
+      - mkdir -p build  # Create the build directory if it doesn't exist
+      - zip -r build/output.zip public/  # Zip the contents of the public directory and place it inside the build folder
 
   post_build:
     commands:
@@ -23,6 +23,6 @@ phases:
 
 artifacts:
   files:
-    - '**/*'  # This pattern includes all files in the base-directory
-  base-directory: public  # This is where Gatsby outputs its build files
+    - 'build/output.zip'  # Reference the zip file created inside the build folder
+  base-directory: build  # The directory where the zip file is located
   discard-paths: no
