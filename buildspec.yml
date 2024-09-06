@@ -15,10 +15,10 @@ phases:
       - 'yarn build'  # Build the Gatsby project
   
   post_build:
-  commands:
-    - echo "Deploying to S3..."
-    - 'aws s3 sync public/ s3://mkrog.com/ --delete'  # Removed the --acl flag
-    - 'aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"'  # Invalidate CloudFront cache (optional)
+    commands:
+      - echo "Deploying to S3..."
+      - 'aws s3 sync public/ s3://mkrog.com/ --delete'  # Removed the --acl flag
+      - 'aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"'  # Invalidate CloudFront cache (optional)
 
 artifacts:
   files:
