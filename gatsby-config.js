@@ -29,7 +29,6 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     'gatsby-omni-font-loader',
-    'gatsby-plugin-google-vitals',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -195,19 +194,6 @@ module.exports = {
             },
           },
         ],
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-vitals`,
-      options: {
-        // The Google Analytics property ID; the reporting code won't be generated without it
-        trackingId: 'G-0H6L8NK62C', // replace with your Google Analytics tracking ID
-        // Optional parameter (default false) - Enable analytics in development mode
-        enableDevelopment: false, // default value
-        // Optional parameter (default true) - Manually decide to send a hit on route change
-        enableOnRouteUpdate: true, // default value
-        // Optional parameter (default true) - Manually decide not to send a hit on route change
-        enableWebVitalsTracking: true, // default value
       },
     },
     {
