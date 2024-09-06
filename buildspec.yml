@@ -1,25 +1,26 @@
-version: 0.2
+version: 0.2  # Adjusted to the latest version
 
 phases:
   install:
     commands:
-      - echo "Installing dependencies..."
-      - yarn install  # Or `npm install` if you're using npm
-
+      - 'touch .npmignore'  # Avoid .npmignore errors
+      - 'yarn global add gatsby-cli'  # Install Gatsby globally using Yarn
+  
+  pre_build:
+    commands:
+      - 'yarn install'  # Install project dependencies using Yarn
+  
   build:
     commands:
-      - echo "Building the Gatsby project..."
-      - yarn build  # Or `npm run build` if you're using npm
-      - echo "Listing files in the public directory after build..."
-      - ls -la public/  # List the contents of the public directory to ensure files are being generated
-
+      - 'yarn build'  # Run the Gatsby build using Yarn
+  
   post_build:
     commands:
-      - echo "Invalidating CloudFront cache..."
-      - aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"
+      - 'aws s3 sync "public/" "s3://mkrog.com" --delete --acl "public-read"'  # Sync build output to S3
+      - 'aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"'  # Invalidate CloudFront cache (optional)
 
 artifacts:
+  base-directory: public  # Specify the Gatsby output folder
   files:
-    - '**/*'  # This pattern includes all files in the public folder
-  base-directory: public  # Ensure Gatsby outputs the static files in the public directory
-  discard-paths: no
+    - '**/*'  # Include all files in the `public` folder
+  discard-paths: yes  # Flatten the directory structure
