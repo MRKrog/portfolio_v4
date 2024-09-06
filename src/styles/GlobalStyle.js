@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     scroll-behavior: smooth;
   }
-
+  
   *,
   *:before,
   *:after {
@@ -23,6 +23,9 @@ const GlobalStyle = createGlobalStyle`
   ::selection {
     background-color: var(--lightest-navy);
     color: var(--lightest-slate);
+
+    background-color: #c5c5c5;
+    color: #1d1d1f;
   }
 
   /* Provide basic, default focus styles.*/
@@ -79,6 +82,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--m-font-primary);
     font-size: var(--fz-copy);
     line-height: 1.3;
+
+    // background-color: rgb(15 23 42/1);
 
     @media (max-width: 480px) {
       font-size: var(--fz-lg);

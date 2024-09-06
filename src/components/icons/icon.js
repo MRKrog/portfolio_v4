@@ -15,11 +15,14 @@ import {
   IconPlayStore,
   IconStar,
   IconTwitter,
+  MLogo
 } from '@components/icons';
 import { Icon as IconifyIcon } from "@iconify/react";
 
 const Icon = ({ name }) => {
   switch (name) {
+    case 'MLogo':
+      return <MLogo />;
     case 'AppStore':
       return <IconAppStore />;
     case 'Bookmark':
