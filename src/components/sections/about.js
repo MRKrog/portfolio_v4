@@ -33,10 +33,9 @@ const StyledAboutSection = styled.section`
   }
 
   h2 {
-    top: 2rem;
-    // top: -1rem;
+    top: 1rem;
     right: 0;
-    z-index: 10;
+    z-index: -1;
     // color: transparent; /* Make the fill color transparent */
     // -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); 
     // mix-blend-mode: overlay;
@@ -76,7 +75,6 @@ const StyledPic = styled.div`
     position: relative;
     width: 100%;
     border-radius: var(--border-radius);
-    // background-color: var(--m-light-black);
     background-color: #cccccc;
 
     .img {

@@ -29,6 +29,7 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     'gatsby-omni-font-loader',
+    'gatsby-plugin-google-vitals',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -37,15 +38,19 @@ module.exports = {
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
-        display: 'minimal-ui',
-        // icon: 'src/images/logo.png',
-        icon: 'src/images/mLogo.png',
+        // display: 'minimal-ui',
+        icon: 'src/images/icon.png',
+        // icon: 'src/images/mLogo.png',
+        display: 'standalone', // You can also choose fullscreen for a web app-like experience
+        orientation: 'portrait', // Lock the app orientation if needed,
+        description: 'A portfolio showcasing Michael Krog\'s work and skills',
+        categories: ['business', 'portfolio', 'developer'], // Add relevant categories
       },
     },
     {
       resolve: `gatsby-omni-font-loader`,
       options: {
-        mode: "async",
+        mode: "preload",
         enableListener: true,
         preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
         web: [
@@ -193,9 +198,41 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-vitals`,
       options: {
-        trackingId: 'UA-45666519-2',
+        // The Google Analytics property ID; the reporting code won't be generated without it
+        trackingId: 'G-0H6L8NK62C', // replace with your Google Analytics tracking ID
+        // Optional parameter (default false) - Enable analytics in development mode
+        enableDevelopment: false, // default value
+        // Optional parameter (default true) - Manually decide to send a hit on route change
+        enableOnRouteUpdate: true, // default value
+        // Optional parameter (default true) - Manually decide not to send a hit on route change
+        enableWebVitalsTracking: true, // default value
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          "G-0H6L8NK62C", // Google Analytics / GA
+        ],
+        // This object gets passed directly to the gtag config command
+        // This config will be shared across all trackingIds
+        gtagConfig: {
+          optimize_id: "OPT_CONTAINER_ID",
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: false,
+          // Setting this parameter is also optional
+          respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          exclude: ["/preview/**", "/do-not-track/me/too/"],
+        },
       },
     },
   ],

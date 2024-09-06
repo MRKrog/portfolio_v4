@@ -15,10 +15,12 @@ const StyledShowcaseSection = styled.section`
   h2 {
     top: 0rem;
     right: 0;
-    z-index: 10;
+    z-index: -1;
   }
   
 `;
+// color: var(--m-light-black);
+// color: var(--m-blue);
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -52,7 +54,7 @@ const StyledProject = styled.li`
     }
   }
 
-  &:nth-of-type(odd) {
+  &:nth-of-type(even) {
     .project-content {
       grid-column: 7 / -1;
       text-align: right;
@@ -130,15 +132,18 @@ const StyledProject = styled.li`
 
   .project-overline {
     margin: 10px 0;
-    color: var(--green);
+    // color: var(--green);
     font-family: var(--font-mono);
     font-size: var(--fz-xs);
     font-weight: 400;
   }
 
   .project-title {
-    color: var(--lightest-slate);
+    color: var(--m-light-black);
+    // color: var(--lightest-slate);
     font-size: clamp(24px, 5vw, 28px);
+
+    pointer-events: none;
 
     @media (min-width: 768px) {
       margin: 0 0 20px;
@@ -165,12 +170,15 @@ const StyledProject = styled.li`
   }
 
   .project-description {
-    ${({ theme }) => theme.mixins.boxShadow};
+    // ${({ theme }) => theme.mixins.boxShadow};
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
     position: relative;
     z-index: 2;
     padding: 25px;
     border-radius: var(--border-radius);
-    background-color: var(--light-navy);
+    background-color: #efefef;
+    // background-color: var(--m-lightest-gray);
+    // background-color: var(--light-navy);
     color: var(--light-slate);
     font-size: var(--fz-lg);
 
@@ -179,9 +187,9 @@ const StyledProject = styled.li`
       background-color: transparent;
       box-shadow: none;
 
-      &:hover {
-        box-shadow: none;
-      }
+      // &:hover {
+      //   box-shadow: none;
+      // }
     }
 
     a {
@@ -269,7 +277,7 @@ const StyledProject = styled.li`
     a {
       width: 100%;
       height: 100%;
-      background-color: var(--green);
+      // background-color: var(--m-blue);
       border-radius: var(--border-radius);
       vertical-align: middle;
 
@@ -396,8 +404,8 @@ const Featured = () => {
                         ))}
                       </ul>
                     )}
-
-                    <div className="project-links">
+                  
+                    {/* <div className="project-links">
                       {cta && (
                         <a href={cta} aria-label="Course Link" className="cta">
                           Learn More
@@ -413,7 +421,8 @@ const Featured = () => {
                           <Icon name="External" />
                         </a>
                       )}
-                    </div>
+                    </div> */}
+                    
                   </div>
                 </div>
 

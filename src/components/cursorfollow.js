@@ -21,7 +21,6 @@ const CursorFollow = () => {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      console.log('e', e.clientY)
       setPosition({ x: e.clientX, y: e.clientY });
     };
 
