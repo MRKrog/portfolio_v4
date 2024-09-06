@@ -24,4 +24,4 @@ artifacts:
   files:
     - '**/*'  # Include everything in the public folder (for future use if needed)
   base-directory: public
-  discard-paths: yes  # Flatten the directory structure
+  discard-paths: yes  # Flatten the directory structur
