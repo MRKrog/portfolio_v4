@@ -10,18 +10,16 @@ phases:
     commands:
       - echo "Building the Gatsby project..."
       - yarn build  # Or `npm run build` if you're using npm
-      - echo "Listing files in the public directory:"
-      - ls -la public/  # List the contents of the public directory to verify the build output
+      - echo "Listing files in the public directory after build..."
+      - ls -la public/  # List the contents of the public directory to ensure files are being generated
 
   post_build:
     commands:
-      - echo "Checking AWS CLI version"
-      - aws --version
-      - echo "Invalidating CloudFront cache"
+      - echo "Invalidating CloudFront cache..."
       - aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"
 
 artifacts:
   files:
-    - '**/*'  # All files from the public folder
-  base-directory: public  # Gatsby outputs the static files in the public directory
+    - '**/*'  # This pattern includes all files in the public folder
+  base-directory: public  # Ensure Gatsby outputs the static files in the public directory
   discard-paths: no
