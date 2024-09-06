@@ -1,26 +1,27 @@
-version: 0.2  # Adjusted to the latest version
+version: 0.2
 
 phases:
   install:
     commands:
-      - 'touch .npmignore'  # Avoid .npmignore errors
-      - 'yarn global add gatsby-cli'  # Install Gatsby globally using Yarn
+      - 'touch .npmignore'  # Prevent .npmignore issues
+      - 'yarn global add gatsby-cli'  # Install Gatsby CLI globally
   
   pre_build:
     commands:
-      - 'yarn install'  # Install project dependencies using Yarn
+      - 'yarn install'  # Install dependencies
   
   build:
     commands:
-      - 'yarn build'  # Run the Gatsby build using Yarn
+      - 'yarn build'  # Build the Gatsby project
   
   post_build:
     commands:
-      - 'aws s3 sync "public/" "s3://mkrog.com" --delete --acl "public-read"'  # Sync build output to S3
-      - 'aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"'  # Invalidate CloudFront cache (optional)
+      - echo "Deploying to S3..."
+      - 'aws s3 sync public/ s3://mkrog.com/ --delete --acl "public-read"'  # Sync the public/ folder to S3
+      - 'aws cloudfront create-invalidation --distribution-id EBY5A4SBU2CE0 --paths "/*"'  # Invalidate CloudFront (if you're using it)
 
 artifacts:
-  base-directory: public  # Specify the Gatsby output folder
   files:
-    - '**/*'  # Include all files in the `public` folder
+    - '**/*'  # Include everything in the public folder (for future use if needed)
+  base-directory: public
   discard-paths: yes  # Flatten the directory structure
