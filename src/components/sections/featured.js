@@ -36,7 +36,8 @@ const StyledProject = styled.li`
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(12, 1fr);
-  align-items: center;
+  // align-items: center;
+  align-items: flex-end;
 
   @media (max-width: 768px) {
     ${({ theme }) => theme.mixins.boxShadow};
@@ -54,62 +55,65 @@ const StyledProject = styled.li`
     }
   }
 
-  &:nth-of-type(even) {
-    .project-content {
-      grid-column: 7 / -1;
-      text-align: right;
+  // &:nth-of-type(even) {
+  //   .project-content {
+  //     grid-column: 7 / -1;
+  //     text-align: right;
 
-      @media (max-width: 1080px) {
-        grid-column: 5 / -1;
-      }
-      @media (max-width: 768px) {
-        grid-column: 1 / -1;
-        padding: 40px 40px 30px;
-        text-align: left;
-      }
-      @media (max-width: 480px) {
-        padding: 25px 25px 20px;
-      }
-    }
-    .project-tech-list {
-      justify-content: flex-end;
+  //     @media (max-width: 1080px) {
+  //       grid-column: 5 / -1;
+  //     }
+  //     @media (max-width: 768px) {
+  //       grid-column: 1 / -1;
+  //       padding: 40px 40px 30px;
+  //       text-align: left;
+  //     }
+  //     @media (max-width: 480px) {
+  //       padding: 25px 25px 20px;
+  //     }
+  //   }
+  //   .project-tech-list {
+  //     justify-content: flex-end;
 
-      @media (max-width: 768px) {
-        justify-content: flex-start;
-      }
+  //     @media (max-width: 768px) {
+  //       justify-content: flex-start;
+  //     }
 
-      li {
-        margin: 0 0 5px 20px;
+  //     li {
+  //       margin: 0 0 5px 20px;
 
-        @media (max-width: 768px) {
-          margin: 0 10px 5px 0;
-        }
-      }
-    }
-    .project-links {
-      justify-content: flex-end;
-      margin-left: 0;
-      margin-right: -10px;
+  //       @media (max-width: 768px) {
+  //         margin: 0 10px 5px 0;
+  //       }
+  //     }
+  //   }
+  //   .project-links {
+  //     justify-content: flex-end;
+  //     margin-left: 0;
+  //     margin-right: -10px;
 
-      @media (max-width: 768px) {
-        justify-content: flex-start;
-        margin-left: -10px;
-        margin-right: 0;
-      }
-    }
-    .project-image {
-      grid-column: 1 / 8;
+  //     @media (max-width: 768px) {
+  //       justify-content: flex-start;
+  //       margin-left: -10px;
+  //       margin-right: 0;
+  //     }
+  //   }
+  //   .project-image {
+  //     grid-column: 1 / 8;
 
-      @media (max-width: 768px) {
-        grid-column: 1 / -1;
-      }
-    }
-  }
+  //     @media (max-width: 768px) {
+  //       grid-column: 1 / -1;
+  //     }
+  //   }
+  // }
 
   .project-content {
     position: relative;
-    grid-column: 1 / 7;
-    grid-row: 1 / -1;
+    // grid-column: 1 / 12;
+    // grid-row: 2 / -1;
+    grid-column: 1 / 9;
+    grid-row: -1 / 9;
+    z-index: 9;
 
     @media (max-width: 1080px) {
       grid-column: 1 / 9;
@@ -176,9 +180,7 @@ const StyledProject = styled.li`
     z-index: 2;
     padding: 25px;
     border-radius: var(--border-radius);
-    background-color: #efefef;
-    // background-color: var(--m-lightest-gray);
-    // background-color: var(--light-navy);
+    background-color: #f7f7f7;
     color: var(--light-slate);
     font-size: var(--fz-lg);
 
@@ -186,10 +188,6 @@ const StyledProject = styled.li`
       padding: 20px 0;
       background-color: transparent;
       box-shadow: none;
-
-      // &:hover {
-      //   box-shadow: none;
-      // }
     }
 
     a {
@@ -202,6 +200,70 @@ const StyledProject = styled.li`
     }
   }
 
+  .project-image {
+    ${({ theme }) => theme.mixins.boxShadow};
+    // grid-column: 3 / -1;
+    grid-column: 3 / -1;
+    grid-row: 1 / -1;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 768px) {
+      grid-column: 1 / -1;
+      height: 100%;
+      opacity: 0.25;
+    }
+
+    a {
+      width: 100%;
+      height: 100%;
+      // background-color: var(--m-blue);
+      border-radius: var(--border-radius);
+      vertical-align: middle;
+
+      &:hover,
+      &:focus {
+        background: transparent;
+        outline: 0;
+
+        &:before,
+        .img {
+          background: transparent;
+          filter: none;
+        }
+      }
+
+      // &:before {
+      //   content: '';
+      //   position: absolute;
+      //   width: 100%;
+      //   height: 100%;
+      //   top: 0;
+      //   left: 0;
+      //   right: 0;
+      //   bottom: 0;
+      //   z-index: 3;
+      //   transition: var(--transition);
+      //   background-color: var(--navy);
+      //   mix-blend-mode: screen;
+      // }
+    }
+
+    .img {
+      border-radius: var(--border-radius);
+      mix-blend-mode: multiply;
+      filter: grayscale(100%) contrast(1) brightness(90%);
+
+      @media (max-width: 768px) {
+        object-fit: cover;
+        width: auto;
+        height: 100%;
+        filter: grayscale(100%) contrast(1) brightness(50%);
+      }
+    }
+  }
+
+  // OUTSIDE
   .project-tech-list {
     display: flex;
     flex-wrap: wrap;
@@ -258,68 +320,6 @@ const StyledProject = styled.li`
     .cta {
       ${({ theme }) => theme.mixins.smallButton};
       margin: 10px;
-    }
-  }
-
-  .project-image {
-    ${({ theme }) => theme.mixins.boxShadow};
-    grid-column: 6 / -1;
-    grid-row: 1 / -1;
-    position: relative;
-    z-index: 1;
-
-    @media (max-width: 768px) {
-      grid-column: 1 / -1;
-      height: 100%;
-      opacity: 0.25;
-    }
-
-    a {
-      width: 100%;
-      height: 100%;
-      // background-color: var(--m-blue);
-      border-radius: var(--border-radius);
-      vertical-align: middle;
-
-      &:hover,
-      &:focus {
-        background: transparent;
-        outline: 0;
-
-        &:before,
-        .img {
-          background: transparent;
-          filter: none;
-        }
-      }
-
-      &:before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 3;
-        transition: var(--transition);
-        background-color: var(--navy);
-        mix-blend-mode: screen;
-      }
-    }
-
-    .img {
-      border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1) brightness(90%);
-
-      @media (max-width: 768px) {
-        object-fit: cover;
-        width: auto;
-        height: 100%;
-        filter: grayscale(100%) contrast(1) brightness(50%);
-      }
     }
   }
 `;
@@ -391,7 +391,7 @@ const Featured = () => {
                     <h3 className="project-title">
                       <a href={external}>{title}</a>
                     </h3>
-
+                  
                     <div
                       className="project-description"
                       dangerouslySetInnerHTML={{ __html: html }}
