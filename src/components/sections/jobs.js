@@ -11,9 +11,9 @@ const StyledJobsSection = styled.section`
   max-width: 900px;
 
   h2 {
-    // top: 1em;
     top: 100px;
     left: 0;
+    z-index: 2;
   }
 
   .test-circle {
@@ -97,16 +97,13 @@ const StyledTabButton = styled.button`
   padding: 0 20px 2px;
   border-right: 1px solid var(--m-lightest-gray);
   background-color: transparent;
-  // color: var(--m-dim-gray);
-  color: ${({ $isActive }) => ($isActive ? 'var(--green)' : 'var(--m-dim-gray)')};
-  // font-family: var(--m-font-title);
+  color: ${({ $isActive }) => ($isActive ? 'var(--m-blue)' : 'var(--m-dim-gray)')};
   font-family: var(--m-font-sub-title);
-  font-size: var(--fz-xs);
-  font-weight: bold;
+  font-size: var(--fz-lg);
+  font-weight: 500;
   text-align: left;
   white-space: nowrap;
-  // text-transform: uppercase;
-  letter-spacing: .2em;
+  letter-spacing: .1em;
 
   &:first-child {
     // border-left: 1px solid var(--m-lightest-gray);
@@ -152,29 +149,23 @@ const StyledTabPanel = styled.div`
   h3 {
     margin-bottom: 2px;
     font-size: var(--fz-xxl);
-    font-weight: 500;
-    // line-height: 1.3;
+    font-weight: 700;
     padding-bottom: 12px;
     font-size: 1.75rem;
-    font-weight: bold; 
     line-height: 1.1; 
     margin: 0;
-    letter-spacing: -0.02em;
 
     
     .company {
-      color: var(--green);
+      color: var(--m-blue);
     }
   }
 
   .range {
     margin-bottom: 20px;
     color: var(--m-dim-gray);
-    // font-family: var(--font-mono);
-    font-size: var(--fz-xs);
-    font-family: var(--m-font-sub-title);
-    letter-spacing: .1em;
-    font-weight: 100;
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
   }
 
   .skills-container {
@@ -182,12 +173,9 @@ const StyledTabPanel = styled.div`
 
     h5 {
       margin: 0;
-      // font-size: var(--fz-s);
-      font-size: 16px;
-      letter-spacing: 0.05em;
-      // margin: 10px;
-      padding-top: 20px;
-      padding-bottom: 10px;
+      font-size: 18px;
+      padding-top: 15px;
+      padding-bottom: 5px;
     }
 
     ul.skills-list {
@@ -204,13 +192,16 @@ const StyledTabPanel = styled.div`
         margin-bottom: 10px;
         padding-left: 20px;
         font-family: var(--font-mono);
-        // font-size: var(--fz-xs);
+        color: var(--m-light-black);
+        font-size: var(--fz-sm);
+        display: flex;
+        align-items: center;
 
         &:before {
           content: '•';
           position: absolute;
           left: 0;
-          color: var(--green);
+          // color: var(--m-blue);
           font-size: var(--fz-sm);
           line-height: 12px;
         }

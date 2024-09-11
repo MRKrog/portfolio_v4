@@ -30,24 +30,21 @@ const StyledHeroSection = styled.section`
   }
 
   h3 {
-    line-height: 1;
+    line-height: .95;
     margin: 0;
     font-size: clamp(40px, 8vw, 100px);
-    // text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     font-family: var(--m-font-title);
-    // color: var(--m-medium-black);
-    color: var(--m-light-black);
   }
 
   h4 {
     font-family: var(--m-font-sub-title);
-    color: var(--m-dim-gray);
-    font-size: clamp(20px, 6vw, 31px);
+    color: var(--m-light-black);
+    font-size: clamp(20px, 6vw, 28px);
     text-transform: lowercase;
     line-height: 1;
     margin: 0;
-    font-weight: 100;
+    font-weight: 200;
     letter-spacing: 4px;
     text-align: center;
   }
@@ -55,10 +52,7 @@ const StyledHeroSection = styled.section`
   p {
     padding-top: 12px;
     max-width: 750px;
-    // color: var(--m-dim-gray);
     text-align: center;
-    font-weight: 500;
-    // font-size: var(--fz-xl);
   }
 
   .email-link {
@@ -81,19 +75,23 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  const one = <h3>Michael Krog</h3>
   const two = <h4>Crafting clever code, one commit at a time</h4>
   const three = (
     <p>
-      {/* <b>Welcome to my portfolio!</b>{" "} */}
-      Welcome to my portfolio!{" "}
-      Explore projects, past and present, each one crafted with creativity and a dash of fun.{" "}
-      Feel free to reach out and <a>lets chat</a>
+      Welcome to my portfolio! I'm a <b>developer</b> skilled in building interactive web experiences, 
+      from dynamic single-page <b>applications</b> to full-scale <b>web platforms</b>. 
+      Explore my projects, learn more about me, and feel free to reach out — <a href="/#contact">let's chat</a>
+      {/* <b>Welcome to my portfolio!</b> I'm a <b>developer</b> skilled in building interactive web experiences, 
+      from dynamic single-page <b>applications</b> to full-scale <b>web platforms</b>. 
+      Explore my projects, learn more about me, and feel free to reach out — <a href="/#contact">let's chat</a> */}
     </p>
   );
 
   const items = [
     {
-      content: <FlippingText />,
+      // content: <FlippingText />,
+      content: one,
       nodeRef: createRef(null),
     },
     {

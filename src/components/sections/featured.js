@@ -15,9 +15,11 @@ const StyledShowcaseSection = styled.section`
   h2 {
     top: 0rem;
     right: 0;
+    /* left: 0; */
     z-index: -1;
+    /* font-size: 8rem; */
   }
-  
+
 `;
 // color: var(--m-light-black);
 // color: var(--m-blue);
@@ -55,64 +57,70 @@ const StyledProject = styled.li`
     }
   }
 
-  // &:nth-of-type(even) {
-  //   .project-content {
-  //     grid-column: 7 / -1;
-  //     text-align: right;
+  &:nth-of-type(even) {
+    .project-content {
+      // grid-column: 9 / -1;
+      grid-column: -1 / 6;
+      grid-row: -1 / 12;
+      text-align: right;
 
-  //     @media (max-width: 1080px) {
-  //       grid-column: 5 / -1;
-  //     }
-  //     @media (max-width: 768px) {
-  //       grid-column: 1 / -1;
-  //       padding: 40px 40px 30px;
-  //       text-align: left;
-  //     }
-  //     @media (max-width: 480px) {
-  //       padding: 25px 25px 20px;
-  //     }
-  //   }
-  //   .project-tech-list {
-  //     justify-content: flex-end;
+      @media (max-width: 1080px) {
+        grid-column: -1 / 6;
+      }
+      @media (max-width: 768px) {
+        grid-column: 1 / -1;
+        padding: 40px 40px 30px;
+        text-align: left;
+      }
+      @media (max-width: 480px) {
+        padding: 25px 25px 20px;
+      }
+    }
+    .project-tech-list {
+      justify-content: flex-end;
 
-  //     @media (max-width: 768px) {
-  //       justify-content: flex-start;
-  //     }
+      @media (max-width: 768px) {
+        justify-content: flex-start;
+      }
 
-  //     li {
-  //       margin: 0 0 5px 20px;
+      li {
+        margin: 0 0 5px 20px;
 
-  //       @media (max-width: 768px) {
-  //         margin: 0 10px 5px 0;
-  //       }
-  //     }
-  //   }
-  //   .project-links {
-  //     justify-content: flex-end;
-  //     margin-left: 0;
-  //     margin-right: -10px;
+        @media (max-width: 768px) {
+          margin: 0 10px 5px 0;
+        }
+      }
+    }
+    .project-links {
+      justify-content: flex-end;
+      margin-left: 0;
+      margin-right: -10px;
 
-  //     @media (max-width: 768px) {
-  //       justify-content: flex-start;
-  //       margin-left: -10px;
-  //       margin-right: 0;
-  //     }
-  //   }
-  //   .project-image {
-  //     grid-column: 1 / 8;
+      @media (max-width: 768px) {
+        justify-content: flex-start;
+        margin-left: -10px;
+        margin-right: 0;
+      }
+    }
+    .project-image {
+      grid-column: 1 / 11;
+      grid-row: -1 / 1;  
+      // -1/3
+      // grid-column: 3 / -1;
+      // grid-row: 1 / -1;
 
-  //     @media (max-width: 768px) {
-  //       grid-column: 1 / -1;
-  //     }
-  //   }
-  // }
+      @media (max-width: 768px) {
+        grid-column: 1 / -1;
+      }
+    }
+  }
 
   .project-content {
     position: relative;
     // grid-column: 1 / 12;
     // grid-row: 2 / -1;
     grid-column: 1 / 9;
-    grid-row: -1 / 9;
+    grid-row: -1 / 13;
     z-index: 9;
 
     @media (max-width: 1080px) {
@@ -136,25 +144,21 @@ const StyledProject = styled.li`
 
   .project-overline {
     margin: 10px 0;
-    // color: var(--green);
     font-family: var(--font-mono);
-    font-size: var(--fz-xs);
-    font-weight: 400;
+    font-size: var(--fz-sm);
   }
 
   .project-title {
-    color: var(--m-light-black);
-    // color: var(--lightest-slate);
-    font-size: clamp(24px, 5vw, 28px);
-
+    font-size: clamp(24px, 5vw, 36px);
+    font-weight: bold;
     pointer-events: none;
 
     @media (min-width: 768px) {
-      margin: 0 0 20px;
+      margin: 0 0 15px;
     }
 
     @media (max-width: 768px) {
-      color: var(--white);
+      /* color: var(--white); */
 
       a {
         position: static;
@@ -178,10 +182,11 @@ const StyledProject = styled.li`
     box-shadow: 0 10px 30px -15px var(--navy-shadow);
     position: relative;
     z-index: 2;
-    padding: 25px;
+    padding: 20px;
     border-radius: var(--border-radius);
-    background-color: #f7f7f7;
-    color: var(--light-slate);
+    background-color: #ffffff;
+    // background-color: #f7f7f7;
+    /* color: var(--light-slate); */
     font-size: var(--fz-lg);
 
     @media (max-width: 768px) {
@@ -195,8 +200,9 @@ const StyledProject = styled.li`
     }
 
     strong {
-      color: var(--white);
-      font-weight: normal;
+      // color: var(--white);
+      // font-weight: normal;
+      font-weight: bold;
     }
   }
 
@@ -223,12 +229,19 @@ const StyledProject = styled.li`
 
       &:hover,
       &:focus {
-        background: transparent;
+        // background: transparent;
         outline: 0;
 
         &:before,
         .img {
+          // background: var(--m-blue);
+          // width: 100%;
+          // height: 100%;
           background: transparent;
+          // mix-blend-mode: multiply;
+          // filter: brightness(150%) contrast(120%);
+          // filter: sepia(100%) contrast(1) brightness(100%);
+          // filter: grayscale(100%) contrast(1) brightness(100%);
           filter: none;
         }
       }
@@ -251,8 +264,8 @@ const StyledProject = styled.li`
 
     .img {
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
-      filter: grayscale(100%) contrast(1) brightness(90%);
+      // mix-blend-mode: multiply;
+      // filter: grayscale(100%) contrast(1) brightness(100%);
 
       @media (max-width: 768px) {
         object-fit: cover;
@@ -269,13 +282,13 @@ const StyledProject = styled.li`
     flex-wrap: wrap;
     position: relative;
     z-index: 2;
-    margin: 25px 0 10px;
+    margin: 25px 10px 10px;
     padding: 0;
     list-style: none;
 
     li {
       margin: 0 20px 5px 0;
-      color: var(--light-slate);
+      color: var(--m-dim-gray);
       font-family: var(--font-mono);
       font-size: var(--fz-xs);
       white-space: nowrap;
@@ -286,7 +299,7 @@ const StyledProject = styled.li`
 
       li {
         margin: 0 10px 5px 0;
-        color: var(--lightest-slate);
+        /* color: var(--lightest-slate); */
       }
     }
   }
@@ -297,7 +310,7 @@ const StyledProject = styled.li`
     position: relative;
     margin-top: 10px;
     margin-left: -10px;
-    color: var(--lightest-slate);
+    /* color: var(--lightest-slate); */
 
     a {
       ${({ theme }) => theme.mixins.flexCenter};
@@ -337,7 +350,7 @@ const Featured = () => {
               title
               cover {
                 childImageSharp {
-                  gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                  gatsbyImageData(width: 831, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
               }
               tech
@@ -381,6 +394,7 @@ const Featured = () => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, cta } = frontmatter;
             const image = getImage(cover);
+            // console.log('image', image)
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
@@ -405,7 +419,7 @@ const Featured = () => {
                       </ul>
                     )}
                   
-                    {/* <div className="project-links">
+                    <div className="project-links">
                       {cta && (
                         <a href={cta} aria-label="Course Link" className="cta">
                           Learn More
@@ -421,13 +435,13 @@ const Featured = () => {
                           <Icon name="External" />
                         </a>
                       )}
-                    </div> */}
+                    </div>
                     
                   </div>
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
+                  <a href={external ? external : github ? github : '#'} target='_blank'>
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
                 </div>

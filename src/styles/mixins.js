@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
 
 const button = css`
-  color: var(--green);
+  color: var(--m-blue);
   background-color: transparent;
-  border: 1px solid var(--green);
+  border: 1px solid var(--m-blue);
   border-radius: var(--border-radius);
   font-size: var(--fz-xs);
   font-family: var(--font-mono);
@@ -15,7 +15,7 @@ const button = css`
   &:hover,
   &:focus-visible {
     outline: none;
-    box-shadow: 4px 4px 0 0 var(--green);
+    box-shadow: 4px 4px 0 0 var(--m-blue);
     transform: translate(-5px, -5px);
   }
   &:after {
@@ -46,7 +46,7 @@ const mixins = {
 
     &:hover,
     &:focus-visible {
-      color: var(--green);
+      color: var(--m-blue);
       outline: 0;
     }
   `,
@@ -111,9 +111,9 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--green);
+    color: var(--m-blue);
     background-color: transparent;
-    border: 1px solid var(--green);
+    border: 1px solid var(--m-blue);
     border-radius: var(--border-radius);
     padding: 1.25rem 1.75rem;
     font-size: var(--fz-sm);
@@ -125,7 +125,7 @@ const mixins = {
     &:hover,
     &:focus-visible {
       outline: none;
-      box-shadow: 4px 4px 0 0 var(--green);
+      box-shadow: 4px 4px 0 0 var(--m-blue);
       transform: translate(-5px, -5px);
     }
     &:after {

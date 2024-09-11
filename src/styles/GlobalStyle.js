@@ -28,9 +28,9 @@ const GlobalStyle = createGlobalStyle`
     color: #1d1d1f;
   }
 
-  /* Provide basic, default focus styles.*/
+  /* Provide basic, default focus styles.*/˛
   :focus {
-    outline: 2px dashed var(--green);
+    outline: 2px dashed var(--m-blue);
     outline-offset: 3px;
   }
 
@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
     focus.
   */
   :focus-visible {
-    outline: 2px dashed var(--green);
+    outline: 2px dashed var(--m-blue);
     outline-offset: 3px;
   }
 
@@ -170,8 +170,9 @@ const GlobalStyle = createGlobalStyle`
   h6 {
     margin: 0 0 10px 0;
     font-weight: 600;
-    color: var(--m-light-black);
+    color: var(--m-medium-black);
     line-height: 1.1;
+    font-family: var(--m-font-sub-title); 
   }
 
   .big-heading {
@@ -186,13 +187,11 @@ const GlobalStyle = createGlobalStyle`
 
   .m-section-title {
     font-family: var(--m-font-title);
-    // mix-blend-mode: soft-light;
     font-size: 10rem;
     font-weight: bold;
-    color: rgba(255, 255, 255, 40%);
     position: absolute;
-    // z-index: 1;
-    // color: var(--m-medium-black);
+    color: #3d3d3d0d;
+    z-index: 1;
   }
 
   .section-heading {
@@ -223,7 +222,7 @@ const GlobalStyle = createGlobalStyle`
       counter-increment: section;
       content: '0' counter(section) '.';
       margin-right: 10px;
-      color: var(--green);
+      color: var(--m-blue);
       font-family: var(--font-mono);
       font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
       font-weight: 400;
@@ -290,7 +289,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      color: var(--green);
+      color: var(--m-blue);
     }
 
     &.inline-link {
@@ -326,6 +325,9 @@ const GlobalStyle = createGlobalStyle`
     font-size: 18px;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    font-family: var(--m-font-primary);
+    font-weight: 300;
+    /* font-weight: 400; */
 
     &:last-child,
     &:last-of-type {
@@ -347,10 +349,8 @@ const GlobalStyle = createGlobalStyle`
 
   li {
     font-family: var(--m-font-sub-title);
-    // color: var(--m-dim-gray);
     color: var(--m-light-black);
     font-size: var(--fz-lg);
-    // font-size: 18px;
     line-height: 1.5;
     letter-spacing: 0.02em;
   }
@@ -370,14 +370,14 @@ const GlobalStyle = createGlobalStyle`
           content: '▹';
           position: absolute;
           left: 0;
-          color: var(--green);
+          color: var(--m-blue);
         }
       }
     }
   }
 
   blockquote {
-    border-left-color: var(--green);
+    border-left-color: var(--m-blue);
     border-left-style: solid;
     border-left-width: 1px;
     margin-left: 0px;
@@ -417,7 +417,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:hover,
     &:focus {
-      background-color: var(--green);
+      background-color: var(--m-blue);
       color: var(--navy);
       top: 0;
       left: 0;
@@ -431,18 +431,18 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #logo {
-    color: var(--green);
+    color: var(--m-blue);
   }
 
   .overline {
-    color: var(--green);
+    color: var(--m-blue);
     font-family: var(--font-mono);
     font-size: var(--fz-md);
     font-weight: 400;
   }
 
   .subtitle {
-    color: var(--green);
+    color: var(--m-blue);
     margin: 0 0 20px 0;
     font-size: var(--fz-md);
     font-family: var(--font-mono);
@@ -465,7 +465,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     margin-bottom: 50px;
-    color: var(--green);
+    color: var(--m-blue);
 
     .arrow {
       display: block;

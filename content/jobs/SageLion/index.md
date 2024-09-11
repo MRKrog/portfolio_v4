@@ -7,10 +7,10 @@ location: 'Denver, CO'
 range: 'October 2018 - November 2018'
 url: 'https://sagelionmedia.com/'
 skills:
-  - JavaScript
-  - React
-  - Three.js
-  - Node.js
+  - Javascript
+  - JQuery
+  - Wordpress
+  - Design
   - UX/UI
 ---
 
