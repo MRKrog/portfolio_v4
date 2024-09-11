@@ -49,10 +49,11 @@ const StyledSocialList = styled.ul`
     font-size: var(--fz-xxs);
     line-height: var(--fz-lg);
     letter-spacing: 0.1em;
+    font-weight: 300;
     // padding-top: 10px;
     padding: 10px;
     font-family: var(--m-font-primary);
-    // font-family: var(--font-mono);
+    /* font-family: var(--font-mono); */
   }
 `;
 

@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const variables = css`
   :root {
-    --m-blue: #0088CC;
+    --m-blue: #0088CC; // main blue
 
     --m-gray: #c9c9c9;
     --m-dim-gray: #666666;
@@ -11,19 +11,16 @@ const variables = css`
 
     --m-dark-black: #000000;
     --m-black: #231f20; 
-    --m-medium-black: #1d1d1f;
-    --m-light-black: #3d3d3d; 
+    /* --m-medium-black: #1d1d1f; */
+    --m-medium-black: #3d3d3d;
+    /* --m-light-black: #3d3d3d;  */
+    --m-light-black: #606060;
 
     --m-font-title: "Bebas Neue", sans-serif;
-    // --m-font-sub-title: "Roboto Condensed", sans-serif;
-    --m-font-primary: "Sofia Sans Extra Condensed", sans-serif;
-
-    // --m-font-sub-title: "PT Sans Narrow", sans-serif;
-    // --m-font-sub-title: "Sofia Condensed", sans-serif;
-    --m-font-sub-title: "Sofia Sans Extra Condensed", sans-serif;
-
-    // --m-font-montserrat: "Barlow Condensed", sans-serif;
-    // --m-font-serif: "Edu", cursive;
+    --font-mono: "DM Mono", monospace;
+    --m-font-serif: "Edu", cursive;
+    --m-font-primary: "Saira", sans-serif;
+    --m-font-sub-title: "Saira Semi Condensed", sans-serif;
 
     --dark-navy: #020c1b; // 000000
     --navy: #000000; // 242220 // 0a192f
@@ -35,14 +32,11 @@ const variables = css`
     --light-slate: #a8b2d1;
     --lightest-slate: #ccd6f6;
     --white: #e6f1ff;
-    --green: #0088CC; // 4ea7ff // 64ffda // 0088CC
-    --green-tint: rgba(100, 255, 218, 0.1);
+    --m-blue: #0088CC; // 4ea7ff // 64ffda // 0088CC
+    --m-blue-tint: rgba(100, 255, 218, 0.1);
     --pink: #f57dff;
     --blue: #57cbff;
 
-    --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
-      sans-serif;
-    --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
 
     --fz-xxs: 12px;
     --fz-xs: 13px;

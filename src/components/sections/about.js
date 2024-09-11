@@ -33,9 +33,10 @@ const StyledAboutSection = styled.section`
   }
 
   h2 {
-    top: 1rem;
+    top: 4rem;
     right: 0;
-    z-index: -1;
+    z-index: 2;
+    font-size: 8rem;
     // color: transparent; /* Make the fill color transparent */
     // -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); 
     // mix-blend-mode: overlay;
@@ -116,30 +117,30 @@ const StyledPic = styled.div`
 `;
 
 const StyledText = styled.div`
-    right: 0;
-    z-index: 10;
-    mix-blend-mode: color-dodge;
+  right: 0;
+  z-index: 10;
+  mix-blend-mode: color-dodge;
 
-  p {
-    // color: var(--m-dim-gray);
-  }
 
-  h3.about-title {
+  h3 {
     padding-bottom: 12px;
     font-size: 3rem;
-    // font-size: 3.25rem;
     font-weight: bold; 
     line-height: 1.1; 
     margin: 0;
     letter-spacing: -0.02em;
   }
 
-  h5.about-subtitle {
+  h5 {
     margin: 0;
-    font-size: var(--fz-xl);
     padding-bottom: 12px;
-    // font-family: monospace;
-    font-weight: 600;
+    /* font-family: monospace; */
+    /* color: var(--m-light-black); */
+    /* color: var(--m-gray); */
+    color: var(--m-dim-gray);
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    font-weight: 300;
   }
 
   p.about-copy {
@@ -175,7 +176,7 @@ const About = () => {
       
       <div className="test-circle"></div>
       
-      <h2 className="m-section-title">intro</h2>
+      <h2 className="m-section-title">about me</h2>
 
       <div className="inner">
 
@@ -183,26 +184,24 @@ const About = () => {
           <div>
 
             <h3 className="about-title">
-              Hello <br/> I'm <span className='name-gradient'>Mike!</span>
+              A Brief <br/> Who's <span className='name-gradient'>Mike!</span>
             </h3>
-            {/* <h3 className="about-title">
-              Hi, I'm <span className='name-gradient'>Mike!</span>
-            </h3> */}
-            <h5 className="about-subtitle">
-              Full Stack Developer &amp; Designer
-            </h5>
+  
+            <h5 className="about-subtitle">Full Stack Developer | Designer | Problem Solver</h5>
 
             <p className="about-copy">
-              My journey into coding began in 2014 in Chicago, where I immersed myself in building 
-              web applications and crafting intuitive user experiences. Over the years, I’ve brought innovative 
-              solutions to life in diverse environments, from a cutting-edge creative agency in Denver 
-              to spearheading digital transformations at some of the world’s most iconic ski resorts.
+              Originally from the Chicago area, I’ve always been passionate about understanding how things work. Growing up, 
+              I loved inspecting webpage code and recreating it. This curiosity led me to study at DePaul University, and after graduation, 
+              I began working as a web developer and designer.
             </p>
 
             <p className="about-copy">
-              Now, at <a href="https://levar.io/" target="_blank">levAR</a>, I’m at the forefront of revolutionizing eCommerce with 3D and augmented reality. 
-              We're on a mission to bridge the gap between digital and physical, making online products as 
-              engaging and tangible as those in-store.
+              Currently, I’m working at <a href="https://levar.io/" target="_blank">levAR</a>, a startup that I helped build. We’re revolutionizing 
+              eCommerce with <b>3D</b> and <b>Augmented Reality</b>, making online shopping as immersive as in-store experiences.
+            </p>
+
+            <p className="about-copy">
+              When I'm away from the keyboard, I'm probably dreaming about skiing, planning my next trip, or stopping to pet every dog I see.
             </p>
 
           </div>

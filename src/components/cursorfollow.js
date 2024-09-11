@@ -14,6 +14,7 @@ const CursorFollowSection = styled.section`
   transition: all 0.3s ease; 
   max-width: 100%;
   max-height: 100%;
+  z-index: 1;
 `;
 
 const CursorFollow = () => {

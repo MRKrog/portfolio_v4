@@ -8,12 +8,14 @@ import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
 import { MLogo, IconLogo, IconHex } from '@components/icons';
+import { Icon as IconifyIcon } from "@iconify/react";
+
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
   position: fixed;
   top: 0;
-  z-index: 11;
+  z-index: 1;
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
@@ -127,8 +129,11 @@ const StyledLinks = styled.div`
       a {
         position: relative;
         padding-bottom: 5px;
-        font-weight: 500;
-        // padding: 10px;
+        font-weight: 300;
+        /* font-weight: 400; */
+        display: flex;
+        align-items: center;
+        /* color: var(--m-medium-black); */
 
         &::after { // Add this block
           content: '';
@@ -225,13 +230,8 @@ const Nav = ({ isHome }) => {
 
   const navLinks = [
     {
-      name: 'backstory',
+      name: 'about me',
       url: '/#about',
-      nodeRef: React.createRef(null),
-    },
-    {
-      name: 'day job',
-      url: '/#jobs',
       nodeRef: React.createRef(null),
     },
     {
@@ -240,7 +240,13 @@ const Nav = ({ isHome }) => {
       nodeRef: React.createRef(null),
     },
     {
+      name: 'day job',
+      url: '/#jobs',
+      nodeRef: React.createRef(null),
+    },
+    {
       name: 'say hi',
+      icon: <IconifyIcon icon="twemoji:waving-hand" style={{ width: 18, height: 18, marginLeft: 10, verticalAlign: 'text-bottom' }} />,
       url: '/#contact',
       nodeRef: React.createRef(null),
     },
@@ -293,7 +299,7 @@ const Nav = ({ isHome }) => {
                 <TransitionGroup component={null}>
                   {isMounted &&
                     navLinks &&
-                    navLinks.map(({ url, name, nodeRef }, i) => (
+                    navLinks.map(({ url, name, nodeRef, icon }, i) => (
                       <CSSTransition 
                         key={i}
                         nodeRef={nodeRef} 
@@ -305,7 +311,7 @@ const Nav = ({ isHome }) => {
                           ref={nodeRef}
                           style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}
                         >
-                          <Link to={url}>{name}</Link>
+                          <Link to={url}>{name}{icon}</Link>
                         </li>
                       </CSSTransition>
                     ))}
