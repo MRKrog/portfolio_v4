@@ -1,6 +1,6 @@
 ---
 date: '2019-11-01'
-title: 'Full Stack Developer'
+title: 'Lead Developer'
 companyFull: 'levAR'
 company: 'levAR'
 location: 'Chicago, IL'
@@ -15,7 +15,7 @@ skills:
   - UX/UI
 ---
 
-- Lead Full Stack Developer at LEVAR, integrating 3D visualization and augmented reality into eCommerce platforms since formation.
+- Lead Developer at LEVAR, integrating 3D visualization and augmented reality into eCommerce platforms since formation.
 - Spearhead product development for all company initiatives, ensuring seamless execution from concept to delivery.
 - Build and maintain custom eCommerce integrations, customer dashboards, and 3D product visualizers.
 - Collaborate with cross-functional teams to deliver scalable, user-focused applications.

@@ -186,12 +186,19 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .m-section-title {
-    font-family: var(--m-font-title);
-    font-size: 10rem;
+    color: transparent;
+    /* font-family: var(--m-font-title); */
+    font-family: var(--m-font-sub-title);
+    /* font-size: 10rem; */
     font-weight: bold;
+    -webkit-text-stroke: 1px #0088cc30;
     position: absolute;
-    color: #3d3d3d0d;
+    /* color: #3d3d3d0d; */
+    /* color: rgba(255, 255, 255, 0.4); */
     z-index: 1;
+    text-transform: uppercase;
+    white-space: nowrap; // Prevents the text from breaking into a new line
+    overflow: hidden;
   }
 
   .section-heading {

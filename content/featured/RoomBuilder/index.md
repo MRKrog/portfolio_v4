@@ -11,4 +11,4 @@ tech:
   - Typescript
 ---
 
-A custom 3D room builder and designer that allows users to create and personalize virtual spaces interactively. Design rooms in real-time with customizable layouts, furniture, and décor, bringing interior design ideas to life in an immersive 3D environment.
+A custom 3D room builder and designer that allows users to create and personalize virtual spaces interactively. Integrated Design rooms with customizable layouts, furniture, and scenes, bringing interior design ideas to life in an immersive 3D environment.

@@ -21,27 +21,27 @@ const StyledAboutSection = styled.section`
 
   .test-circle {
     top: 0;
+    left: 0;
     position: absolute;
     width: 50vw; // Change as needed
     height: 85vh; // Change as needed
     border-radius: 50%;
     background: #ffffff8f;
-    right: 0;
     opacity: .3;
     z-index: -1;
     transform: scaleX(0.8) scaleY(0.76) rotate(45deg); // Change as needed
   }
 
   h2 {
-    top: 4rem;
+    z-index: -1;
+    top: 0rem;
     right: 0;
-    z-index: 2;
-    font-size: 8rem;
-    // color: transparent; /* Make the fill color transparent */
-    // -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); 
-    // mix-blend-mode: overlay;
-    // color: var(--m-dim-gray);
-    // color: rgba(0, 0, 0, 0.02);
+    /* text-transform: uppercase; */
+    font-size: 17rem;
+    /* color: transparent; */
+    /* -webkit-text-stroke: 1px #0088cc30; */
+    /* font-family: var(--m-font-sub-title); */
+    letter-spacing: -10px;
   }
 
 
@@ -63,7 +63,7 @@ const StyledPic = styled.div`
   width: 100%;
   z-index: -1;
   display: flex;
-  align-items: center;
+  align-items: end;
 
   @media (max-width: 768px) {
     margin: 50px auto 0;
@@ -84,13 +84,12 @@ const StyledPic = styled.div`
       mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1);
       transition: var(--transition);
-
       // transform: scaleX(-1);
     }
 
     &:before,
     &:after {
-      content: '';
+      /* content: ''; */
       display: block;
       position: absolute;
       width: 100%;
@@ -134,18 +133,10 @@ const StyledText = styled.div`
   h5 {
     margin: 0;
     padding-bottom: 12px;
-    /* font-family: monospace; */
-    /* color: var(--m-light-black); */
-    /* color: var(--m-gray); */
     color: var(--m-dim-gray);
     font-family: var(--font-mono);
     font-size: var(--fz-sm);
     font-weight: 300;
-  }
-
-  p.about-copy {
-    // font-size: var(--fz-xl);
-    // font-size: var(--fz-copy);
   }
 
   .next-button {
@@ -174,9 +165,9 @@ const About = () => {
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
       
-      <div className="test-circle"></div>
+      {/* <div className="test-circle"></div> */}
       
-      <h2 className="m-section-title">about me</h2>
+      <h2 className="m-section-title">intro</h2>
 
       <div className="inner">
 
@@ -196,8 +187,8 @@ const About = () => {
             </p>
 
             <p className="about-copy">
-              Currently, I’m working at <a href="https://levar.io/" target="_blank">levAR</a>, a startup that I helped build. We’re revolutionizing 
-              eCommerce with <b>3D</b> and <b>Augmented Reality</b>, making online shopping as immersive as in-store experiences.
+              At the moment, I’m with <a href="https://levar.io/" target="_blank">levAR</a>, a startup I’ve been helping build since day one. 
+              We’re revolutionizing eCommerce with <b>3D</b> and <b>Augmented Reality</b>, making online shopping as immersive as in-store experiences.
             </p>
 
             <p className="about-copy">

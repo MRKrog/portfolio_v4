@@ -8,16 +8,16 @@ import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledShowcaseSection = styled.section`
-  // max-width: 900px;
+  /* max-width: 900px; */
+  /* padding-top: 120px; */
   position: relative;
-  padding-top: 120px;
 
   h2 {
-    top: 0rem;
-    right: 0;
-    /* left: 0; */
+    top: -3rem;
     z-index: -1;
-    /* font-size: 8rem; */
+    right: 0;
+    font-size: 11.5rem;
+    letter-spacing: -4px;
   }
 
 `;
@@ -38,7 +38,6 @@ const StyledProject = styled.li`
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(12, 1fr);
-  // align-items: center;
   align-items: flex-end;
 
   @media (max-width: 768px) {
@@ -113,12 +112,27 @@ const StyledProject = styled.li`
         grid-column: 1 / -1;
       }
     }
+    .topLink {
+      left: 0;
+
+      .triangle {
+        border-right: 80px solid transparent;
+        border-top: 80px solid #3498db;
+        right: auto;
+        border-bottom: auto;
+        border-top-left-radius: 4px;
+      }
+      .external {
+        right: auto;
+        left: 12px;
+      }
+    }
   }
 
   .project-content {
-    position: relative;
     // grid-column: 1 / 12;
     // grid-row: 2 / -1;
+    position: relative;
     grid-column: 1 / 9;
     grid-row: -1 / 13;
     z-index: 9;
@@ -144,8 +158,8 @@ const StyledProject = styled.li`
 
   .project-overline {
     margin: 10px 0;
-    font-family: var(--font-mono);
-    font-size: var(--fz-sm);
+    /* font-family: var(--font-mono); */
+    font-size: var(--fz-md);
   }
 
   .project-title {
@@ -185,8 +199,6 @@ const StyledProject = styled.li`
     padding: 20px;
     border-radius: var(--border-radius);
     background-color: #ffffff;
-    // background-color: #f7f7f7;
-    /* color: var(--light-slate); */
     font-size: var(--fz-lg);
 
     @media (max-width: 768px) {
@@ -200,8 +212,6 @@ const StyledProject = styled.li`
     }
 
     strong {
-      // color: var(--white);
-      // font-weight: normal;
       font-weight: bold;
     }
   }
@@ -212,7 +222,7 @@ const StyledProject = styled.li`
     grid-column: 3 / -1;
     grid-row: 1 / -1;
     position: relative;
-    z-index: 1;
+    z-index: 2;
 
     @media (max-width: 768px) {
       grid-column: 1 / -1;
@@ -262,6 +272,12 @@ const StyledProject = styled.li`
       // }
     }
 
+      &:hover {       
+        .triangle {
+          opacity: .9;
+        }
+      }
+
     .img {
       border-radius: var(--border-radius);
       // mix-blend-mode: multiply;
@@ -271,12 +287,49 @@ const StyledProject = styled.li`
         object-fit: cover;
         width: auto;
         height: 100%;
-        filter: grayscale(100%) contrast(1) brightness(50%);
+        /* filter: grayscale(100%) contrast(1) brightness(50%); */
       }
     }
   }
 
-  // OUTSIDE
+  .topLink {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+
+    .triangle {
+      width: 0;
+      height: 0;
+      border-bottom: 80px solid transparent;
+      border-right: 80px solid #3498db;
+      z-index: 9;
+      position: absolute;
+      top: 0;
+      right: 0;
+      opacity: 0.8;
+      transition: all .3s;
+      border-top-right-radius: 4px;
+    }
+
+
+    .external {
+      position: absolute;
+      top: 10px;
+      right: 6px;
+      z-index: 11;
+      width: 30px;
+
+      svg {
+        width: 26px;
+        height: 26px;
+        stroke: white;
+      }
+    }
+  }
+
   .project-tech-list {
     display: flex;
     flex-wrap: wrap;
@@ -383,9 +436,6 @@ const Featured = () => {
     <section id="projects">
       <StyledShowcaseSection>
 
-      {/* <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
-      </h2> */}
       <h2 className="m-section-title">showcase</h2>
 
       <StyledProjectsGrid>
@@ -420,21 +470,21 @@ const Featured = () => {
                     )}
                   
                     <div className="project-links">
-                      {cta && (
+                      {/* {cta && (
                         <a href={cta} aria-label="Course Link" className="cta">
                           Learn More
                         </a>
-                      )}
-                      {github && (
+                      )} */}
+                      {/* {github && (
                         <a href={github} aria-label="GitHub Link">
                           <Icon name="GitHub" />
                         </a>
-                      )}
-                      {external && !cta && (
+                      )} */}
+                      {/* {external && !cta && (
                         <a href={external} aria-label="External Link" className="external">
                           <Icon name="External" />
                         </a>
-                      )}
+                      )} */}
                     </div>
                     
                   </div>
@@ -444,6 +494,18 @@ const Featured = () => {
                   <a href={external ? external : github ? github : '#'} target='_blank'>
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
+
+                  <div className="topLink">
+                    <div className="triangle"></div>
+                    {external && !cta && (
+                    <div className="external">
+                      <Icon name="External" />
+                    </div>
+                    // <a href={external} aria-label="External Link" className="external">
+                      
+                    // </a>
+                  )}
+                  </div>
                 </div>
               </StyledProject>
             );

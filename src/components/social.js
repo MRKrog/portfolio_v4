@@ -40,6 +40,7 @@ const StyledSocialList = styled.ul`
       svg {
         width: 20px;
         height: 20px;
+        /* stroke: var(--m-light-black); */
       }
     }
   }
@@ -50,10 +51,8 @@ const StyledSocialList = styled.ul`
     line-height: var(--fz-lg);
     letter-spacing: 0.1em;
     font-weight: 300;
-    // padding-top: 10px;
     padding: 10px;
-    font-family: var(--m-font-primary);
-    /* font-family: var(--font-mono); */
+    
   }
 `;
 

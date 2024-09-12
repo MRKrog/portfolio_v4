@@ -19,7 +19,6 @@ const StyledHeroSection = styled.section`
   }
 
   h1 {
-    // margin: 0 0 30px 4px;
     color: var(--m-black);
     // font-size: clamp(var(--fz-sm), 5vw, var(--fz-md));
     font-weight: 400;
@@ -81,10 +80,7 @@ const Hero = () => {
     <p>
       Welcome to my portfolio! I'm a <b>developer</b> skilled in building interactive web experiences, 
       from dynamic single-page <b>applications</b> to full-scale <b>web platforms</b>. 
-      Explore my projects, learn more about me, and feel free to reach out — <a href="/#contact">let's chat</a>
-      {/* <b>Welcome to my portfolio!</b> I'm a <b>developer</b> skilled in building interactive web experiences, 
-      from dynamic single-page <b>applications</b> to full-scale <b>web platforms</b>. 
-      Explore my projects, learn more about me, and feel free to reach out — <a href="/#contact">let's chat</a> */}
+      Explore <a href="/#projects">my projects</a>, learn more <a href="/#about">about me</a>, and feel free to reach out — <a href="/#contact">let's chat</a>
     </p>
   );
 
