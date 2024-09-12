@@ -15,3 +15,4 @@ export { default as Projects } from './sections/projects';
 export { default as Contact } from './sections/contact';
 
 export { default as CursorFollow } from './cursorfollow';
+export { default as ContactForm } from './contactform';

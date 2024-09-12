@@ -28,8 +28,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
-    // 'gatsby-omni-font-loader',
-    // 'gatsby-plugin-prefetch-google-fonts',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -56,80 +54,12 @@ module.exports = {
           `Saira\:100,300,400,500,600,700`,
           `Saira Semi Condensed\:100,300,400,500,600,700`,
           `Saira Condensed\:100,300,400,600,700`,
-          `Edu`
-          // `Sofia Sans\:400,700`,
-          // `PT Sans Narrow\:400,700`,
-          // `Roboto Condensed\:400,700`,
+          `Edu`,
+          `Anton\:400,700`
         ],
         display: 'swap'
       }
     },
-    // {
-    //   resolve: `gatsby-plugin-prefetch-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       // {
-    //       //   family: `Cutive Mono`,
-    //       //   variants: [`400`, `700`]
-    //       // },
-    //       {
-    //         family: `Bebas Neue`,
-    //         variants: [`400`, `700`]
-    //       },
-    //       {
-    //         family: `Saira Condensed`,
-    //         variants: [`400`, `700`]
-    //       },
-    //       {
-    //         family: `Sofia Condensed`,
-    //         variants: [`400`, `700`]
-    //       },
-    //       {
-    //         family: `PT Sans Narrow`,
-    //         variants: [`400`, `700`]
-    //       },
-    //       {
-    //         family: `Roboto Condensed`,
-    //         variants: [`400`, `700`]
-    //       }
-    //     ]
-    //   }
-    // },
-    // {
-    //   resolve: `gatsby-omni-font-loader`,
-    //   options: {
-    //     mode: "preload",
-    //     enableListener: true,
-    //     preconnect: [`https://fonts.googleapis.com`, `https://fonts.gstatic.com`],
-    //     web: [
-    //       {
-    //         name: `Cutive Mono`,
-    //         // file: `https://fonts.googleapis.com/css2?family=Inconsolata:wght@200:300:600;900&display=swap`,
-    //         file: 'https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap',
-    //       },
-    //       {
-    //         name: `Bebas Neue`,
-    //         file: `https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap`,
-    //       },
-    //       {
-    //         name: `PT Sans Narrow`,
-    //         file: `https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap`,
-    //       },
-    //       {
-    //         name: `Roboto Condensed`,
-    //         file: `https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap`,
-    //       },
-    //       {
-    //         name: `Saira Condensed`,
-    //         file: `https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap`,
-    //       },
-    //       {
-    //         name: `Sofia Condensed`,
-    //         file: `https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap`,
-    //       },
-    //     ],
-    //   },
-    // },
     `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-filesystem`,

@@ -52,7 +52,7 @@ const Icon = ({ name }) => {
     case 'Twitter':
       return <IconTwitter />;
     case 'Email':
-      return <IconifyIcon icon="ic:outline-email" width="1.2em" height="1.2em" />;
+      return <IconifyIcon icon="ic:outline-email" width="1.2em" height="1.2em" style={{ strokeWidth: '20px' }} />;
     default:
       return <IconExternal />;
   }

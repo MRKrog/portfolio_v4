@@ -11,16 +11,17 @@ const variables = css`
 
     --m-dark-black: #000000;
     --m-black: #231f20; 
-    /* --m-medium-black: #1d1d1f; */
     --m-medium-black: #3d3d3d;
-    /* --m-light-black: #3d3d3d;  */
     --m-light-black: #606060;
+    /* --m-medium-black: #1d1d1f; */
+    /* --m-light-black: #3d3d3d;  */
 
     --m-font-title: "Bebas Neue", sans-serif;
     --font-mono: "DM Mono", monospace;
     --m-font-serif: "Edu", cursive;
     --m-font-primary: "Saira", sans-serif;
     --m-font-sub-title: "Saira Semi Condensed", sans-serif;
+    --m-font-back: 'Anton', sans-serif;
 
     --dark-navy: #020c1b; // 000000
     --navy: #000000; // 242220 // 0a192f

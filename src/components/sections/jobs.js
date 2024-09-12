@@ -11,9 +11,13 @@ const StyledJobsSection = styled.section`
   max-width: 900px;
 
   h2 {
-    top: 100px;
+    z-index: -1;
     left: 0;
-    z-index: 2;
+    top: 7rem;
+    font-size: 14rem;
+    /* font-size: clamp(2rem, 100vw, 6rem); */
+    letter-spacing: -8px;
+
   }
 
   .test-circle {
@@ -95,7 +99,7 @@ const StyledTabButton = styled.button`
   width: 100%;
   height: var(--tab-height);
   padding: 0 20px 2px;
-  border-right: 1px solid var(--m-lightest-gray);
+  border-right: 1px solid var(--m-light-black);
   background-color: transparent;
   color: ${({ $isActive }) => ($isActive ? 'var(--m-blue)' : 'var(--m-dim-gray)')};
   font-family: var(--m-font-sub-title);
@@ -294,7 +298,7 @@ const Jobs = () => {
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
 
-      <div className="test-circle"></div>
+      {/* <div className="test-circle"></div> */}
        
       <h2 className="m-section-title">day job</h2>
 
