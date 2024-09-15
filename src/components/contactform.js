@@ -5,6 +5,7 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false); // New state for loading
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,8 +18,10 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    setLoading(true); // Set loading to true when the form submission starts
+    
     try {
-      const response = await fetch('https://7lem2psccg.execute-api.us-east-1.amazonaws.com/prod/confirm', {
+      const response = await fetch('https://q6gzuzpcyk.execute-api.us-east-1.amazonaws.com/prod/confirm', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,13 +38,14 @@ const ContactForm = () => {
       });
     } catch (error) {
       console.error('Error submitting the form:', error);
+    } finally {
+      setLoading(false); // Set loading to false after the form submission finishes
     }
   };  
 
   return (
     <div style={{ maxWidth: "600px", margin: "0 auto" }}>
       <form onSubmit={handleSubmit}>
-
         <div style={{ marginBottom: "1em", textAlign: 'left' }}>
           <label htmlFor="email" style={{ fontSize: 14 }}>Email:</label>
           <input
@@ -54,10 +58,10 @@ const ContactForm = () => {
             style={{ 
               width: "100%", 
               padding: "0.5em", 
-              border: "1px solid #ccc", // added border
-              fontSize: "16px", // changed font size
-              borderRadius: "4px", // added border radius
-              boxSizing: "border-box", // added box sizing
+              border: "1px solid #ccc", 
+              fontSize: "16px", 
+              borderRadius: "4px", 
+              boxSizing: "border-box", 
               backgroundColor: "#EEEEEE", 
             }}
           />
@@ -74,9 +78,9 @@ const ContactForm = () => {
             style={{ 
               width: "100%", 
               padding: "0.5em", 
-              border: "1px solid #ccc", // added border
-              fontSize: "16px", // changed font size
-              borderRadius: "4px", // added border radius
+              border: "1px solid #ccc", 
+              fontSize: "16px", 
+              borderRadius: "4px", 
               boxSizing: "border-box",
               backgroundColor: "#EEEEEE", 
               height: "100px",
@@ -88,10 +92,32 @@ const ContactForm = () => {
           type="submit" 
           className="email-link"
           style={{ padding: "0.75em 1.5em", cursor: "pointer" }}
+          disabled={loading} // Disable the button while loading
         >
-          Send Message
+          {loading ? (
+            <div className="spinner" style={{ 
+              border: "4px solid #f3f3f3", 
+              borderRadius: "50%", 
+              borderTop: "4px solid #3498db", 
+              width: "20px", 
+              height: "20px", 
+              animation: "spin 2s linear infinite" 
+            }}>
+            </div>
+          ) : (
+            'Send Message'
+          )}
         </button>
       </form>
+
+      <style>
+        {`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}
+      </style>
     </div>
   );
 };

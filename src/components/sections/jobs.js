@@ -13,7 +13,7 @@ const StyledJobsSection = styled.section`
   h2 {
     z-index: -1;
     left: 0;
-    top: 7rem;
+    top: 5rem;
     font-size: 14rem;
     /* font-size: clamp(2rem, 100vw, 6rem); */
     letter-spacing: -8px;
@@ -36,7 +36,7 @@ const StyledJobsSection = styled.section`
   .inner {
     display: flex;
     flex-direction: column;
-    padding-top: 120px;
+    padding-top: 150px;
 
     @media (max-width: 600px) {
       display: block;

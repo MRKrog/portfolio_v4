@@ -34,21 +34,17 @@ const StyledAboutSection = styled.section`
 
   h2 {
     z-index: -1;
-    top: 0rem;
+    top: 1rem;
     right: 0;
-    /* text-transform: uppercase; */
-    font-size: 17rem;
-    /* color: transparent; */
-    /* -webkit-text-stroke: 1px #0088cc30; */
-    /* font-family: var(--m-font-sub-title); */
+    font-size: 15rem;
     letter-spacing: -10px;
   }
 
 
   .inner {
-    display: grid; // Change from flex to grid
-    grid-template-columns: 55% 45%; // Adjusts the columns to a 55/45 split
-    grid-gap: 20px; // Adjust this value for the desired padding between sections
+    display: grid;
+    grid-template-columns: 1fr .8fr;
+    grid-gap: 10px;
     position: relative;
     z-index: 2;
 
