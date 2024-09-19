@@ -111,22 +111,26 @@ const mixins = {
   `,
 
   bigButton: css`
-    color: var(--m-blue);
-    background-color: transparent;
+    color: #ffffff;
+    /* color: var(--m-blue); */
+    background-color: var(--m-blue);
     border: 1px solid var(--m-blue);
     border-radius: var(--border-radius);
     padding: 1.25rem 1.75rem;
     font-size: var(--fz-sm);
-    font-family: var(--font-mono);
+    font-family: var(--m-font-primary);
+    /* font-family: var(--font-mono); */
     line-height: 1;
     text-decoration: none;
+    opacity: 1;
     transition: var(--transition);
 
     &:hover,
     &:focus-visible {
       outline: none;
-      box-shadow: 4px 4px 0 0 var(--m-blue);
-      transform: translate(-5px, -5px);
+      opacity: .7;
+      /* box-shadow: 4px 4px 0 0 var(--m-blue); */
+      /* transform: translate(-5px, -5px); */
     }
     &:after {
       display: none !important;

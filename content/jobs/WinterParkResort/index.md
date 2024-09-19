@@ -8,9 +8,9 @@ range: 'July 2013 - January 2017'
 url: 'https://www.winterparkresort.com/'
 skills:
   - JavaScript
-  - React
-  - Three.js
-  - Node.js
+  - jQuery
+  - WordPress
+  - PHP
   - UX/UI
 ---
 

@@ -8,21 +8,18 @@ import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledShowcaseSection = styled.section`
-  /* max-width: 900px; */
-  /* padding-top: 120px; */
   position: relative;
 
   h2 {
     top: -3rem;
     z-index: -1;
     right: 0;
-    font-size: 11.5rem;
-    letter-spacing: -4px;
+    font-size: clamp(2rem, 19vw, 11.5rem);
+    letter-spacing: -3px;
+    margin: 0;
   }
 
 `;
-// color: var(--m-light-black);
-// color: var(--m-blue);
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -52,7 +49,7 @@ const StyledProject = styled.li`
     }
 
     @media (max-width: 480px) {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
   }
 
@@ -112,7 +109,7 @@ const StyledProject = styled.li`
         grid-column: 1 / -1;
       }
     }
-    .topLink {
+    .topLink.desktop {
       left: 0;
 
       .triangle {
@@ -143,23 +140,26 @@ const StyledProject = styled.li`
 
     @media (max-width: 768px) {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      /* flex-direction: column; */
+      /* justify-content: center; */
       height: 100%;
       grid-column: 1 / -1;
       padding: 40px 40px 30px;
       z-index: 5;
+      grid-row: unset;
+      position: absolute;
     }
 
     @media (max-width: 480px) {
-      padding: 30px 25px 20px;
+      padding: 20px 20px 0px;
     }
   }
 
   .project-overline {
-    margin: 10px 0;
-    /* font-family: var(--font-mono); */
-    font-size: var(--fz-md);
+    margin: 0 0 10px 0;
+    font-family: var(--font-mono);
+    font-size: var(--fz-sm);
+    font-weight: 500;
   }
 
   .project-title {
@@ -172,7 +172,7 @@ const StyledProject = styled.li`
     }
 
     @media (max-width: 768px) {
-      /* color: var(--white); */
+      margin: 0;
 
       a {
         position: static;
@@ -227,7 +227,8 @@ const StyledProject = styled.li`
     @media (max-width: 768px) {
       grid-column: 1 / -1;
       height: 100%;
-      opacity: 0.25;
+      opacity: 0.15;
+      min-height: 400px;
     }
 
     a {
@@ -292,6 +293,24 @@ const StyledProject = styled.li`
     }
   }
 
+  .topLink.mobile {
+    width: 100%;
+    height: 100%;
+    outline: none;
+
+    @media (min-width: 768px) {
+     display: none;
+    }
+  }
+
+  .topLink.desktop {
+    pointer-events: none;
+     
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
   .topLink {
     cursor: pointer;
     position: absolute;
@@ -313,7 +332,6 @@ const StyledProject = styled.li`
       transition: all .3s;
       border-top-right-radius: 4px;
     }
-
 
     .external {
       position: absolute;
@@ -430,6 +448,7 @@ const Featured = () => {
 
     sr.reveal(revealTitle.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -444,11 +463,20 @@ const Featured = () => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover, cta } = frontmatter;
             const image = getImage(cover);
-            // console.log('image', image)
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
+                  
+                  <a href={external ? external : github ? github : '#'} className="topLink mobile" target='_blank' rel="noreferrer">
+                    <div className="triangle"></div>
+                    {external && !cta && (
+                    <div className="external">
+                      <Icon name="External" />
+                    </div>
+                    )}
+                  </a>
+
                   <div>
                     <p className="project-overline">Featured Project</p>
 
@@ -491,22 +519,20 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'} target='_blank'>
+                  <a href={external ? external : github ? github : '#'} target='_blank' rel="noreferrer">
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
 
-                  <div className="topLink">
+                  <div className="topLink desktop">
                     <div className="triangle"></div>
                     {external && !cta && (
                     <div className="external">
                       <Icon name="External" />
                     </div>
-                    // <a href={external} aria-label="External Link" className="external">
-                      
-                    // </a>
                   )}
                   </div>
                 </div>
+
               </StyledProject>
             );
           })}

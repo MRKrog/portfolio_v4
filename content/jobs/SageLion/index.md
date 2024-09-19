@@ -4,7 +4,7 @@ title: 'Web Developer / Designer'
 company: 'Sage Lion'
 companyFull: 'Sage Lion Media'
 location: 'Denver, CO'
-range: 'October 2018 - November 2018'
+range: 'October 2018 - November 2019'
 url: 'https://sagelionmedia.com/'
 skills:
   - Javascript
