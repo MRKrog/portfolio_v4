@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, createRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -7,7 +7,7 @@ import styled, { css } from 'styled-components';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
-import { MLogo, IconLogo, IconHex } from '@components/icons';
+import { MLogo } from '@components/icons';
 import { Icon as IconifyIcon } from "@iconify/react";
 
 
@@ -167,7 +167,7 @@ const StyledLinks = styled.div`
 
 const Nav = ({ isHome }) => {
   const transitionRef = useRef(null);
-  const resumeRef = useRef(null);
+  // const resumeRef = useRef(null);
   const menuRef = useRef(null);
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
@@ -193,6 +193,7 @@ const Nav = ({ isHome }) => {
       clearTimeout(timeout);
       window.removeEventListener('scroll', handleScroll);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const timeout = isHome ? loaderDelay : 0;

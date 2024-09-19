@@ -238,6 +238,7 @@ const Jobs = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const focusTab = () => {
@@ -256,6 +257,7 @@ const Jobs = () => {
   };
 
   // Only re-run the effect if tabFocus changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => focusTab(), [tabFocus]);
 
   // Focus on tabs when using up & down arrow keys
@@ -311,7 +313,7 @@ const Jobs = () => {
           {jobsData &&
             jobsData.map(({ node }, i) => {
               const { frontmatter = {}, html } = node || {};
-              const { title, url, company, range, companyFull, skills } = frontmatter;
+              const { title, url, range, companyFull, skills } = frontmatter;
               
               const nodeRef = React.createRef(null)
 

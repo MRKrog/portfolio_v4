@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider } from 'styled-components';
-import { Head, Loader, Nav, Social, Email, Footer } from '@components';
+import { Head, Loader, Nav, Social, Footer } from '@components';
 import { GlobalStyle, theme } from '@styles';
 
 const StyledContent = styled.div`
@@ -43,10 +43,9 @@ const Layout = ({ children, location }) => {
     }
 
     handleExternalLinks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
-
-  console.log('isLoading', isLoading)
-  const test = true
+  
   return (
     <>
       <Head />
@@ -83,8 +82,6 @@ const Layout = ({ children, location }) => {
     </>
   );
 };
-
-// {/* <Email isHome={isHome} /> */}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

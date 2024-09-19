@@ -448,6 +448,7 @@ const Featured = () => {
 
     sr.reveal(revealTitle.current, srConfig());
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -467,7 +468,7 @@ const Featured = () => {
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   
-                  <a href={external ? external : github ? github : '#'} className="topLink mobile" target='_blank'>
+                  <a href={external ? external : github ? github : '#'} className="topLink mobile" target='_blank' rel="noreferrer">
                     <div className="triangle"></div>
                     {external && !cta && (
                     <div className="external">
@@ -518,7 +519,7 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'} target='_blank'>
+                  <a href={external ? external : github ? github : '#'} target='_blank' rel="noreferrer">
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
 

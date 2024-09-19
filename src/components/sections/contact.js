@@ -55,6 +55,7 @@ const Contact = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

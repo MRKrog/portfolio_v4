@@ -234,6 +234,7 @@ const Menu = () => {
       document.removeEventListener('keydown', onKeyDown);
       window.removeEventListener('resize', onResize);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const wrapperRef = useRef();
@@ -270,7 +271,7 @@ const Menu = () => {
               </ul>
             )}
 
-            <a href="/resume.pdf" className="resume-link">
+            <a href="/resume.pdf" className="resume-link" target="_blank" rel="noreferrer">
               Resume
             </a>
           </nav>

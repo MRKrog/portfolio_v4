@@ -1,25 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Layout, Hero, About, Jobs, Featured, Projects, Contact, CursorFollow } from '@components';
+import { 
+  Layout, 
+  Hero, 
+  About, 
+  Jobs, 
+  Featured, 
+  // Projects, 
+  Contact, 
+  CursorFollow 
+} from '@components';
 
 const StyledMainContainer = styled.main`
   counter-reset: section;
 `;
 
-const IndexPage = ({ location }) => (
-  <Layout location={location}>
-    <StyledMainContainer className="fillHeight">
-      <Hero />
-      <About />
-      <Jobs />
-      <Featured />
-      {/* <Projects /> */}
-      <Contact />   
-      {/* <CursorFollow /> */}
-    </StyledMainContainer>
-  </Layout>
-);
+const IndexPage = ({ location }) => {
+  const isDesktop = typeof window !== 'undefined' && window.innerWidth > 768;
+
+  return (
+    <Layout location={location}>
+      <StyledMainContainer className="fillHeight">
+        <Hero />
+        <About />
+        <Jobs />
+        <Featured />
+        {/* <Projects /> */}
+        <Contact />   
+        {isDesktop && <CursorFollow />}
+      </StyledMainContainer>
+    </Layout>
+  )
+};
 
 IndexPage.propTypes = {
   location: PropTypes.object.isRequired,

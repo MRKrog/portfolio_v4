@@ -156,6 +156,7 @@ const About = () => {
     }
 
     sr.reveal(revealContainer.current, srConfig());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -183,7 +184,7 @@ const About = () => {
             </p>
 
             <p className="about-copy">
-              At the moment, I’m with <a href="https://levar.io/" target="_blank">levAR</a>, a startup I’ve been helping build since day one. 
+              At the moment, I’m with <a href="https://levar.io/" target="_blank" rel="noreferrer">levAR</a>, a startup I’ve been helping build since day one. 
               We’re revolutionizing eCommerce with <b>3D</b> and <b>Augmented Reality</b>, making online shopping as immersive as in-store experiences.
             </p>
 
