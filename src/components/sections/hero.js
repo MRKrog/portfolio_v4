@@ -31,7 +31,7 @@ const StyledHeroSection = styled.section`
   h3 {
     line-height: .95;
     margin: 0;
-    font-size: clamp(40px, 8vw, 100px);
+    font-size: clamp(65px, 8vw, 100px);
     letter-spacing: 0.03em;
     font-family: var(--m-font-title);
   }
@@ -39,9 +39,9 @@ const StyledHeroSection = styled.section`
   h4 {
     font-family: var(--m-font-sub-title);
     color: var(--m-light-black);
-    font-size: clamp(20px, 6vw, 28px);
+    font-size: clamp(30px, 6vw, 28px);
     text-transform: lowercase;
-    line-height: 1;
+    line-height: 1.1;
     margin: 0;
     font-weight: 200;
     letter-spacing: 4px;
@@ -52,6 +52,7 @@ const StyledHeroSection = styled.section`
     padding-top: 12px;
     max-width: 750px;
     text-align: center;
+    /* font-size: clamp(34px, 6vw, 12); */
   }
 
   .email-link {

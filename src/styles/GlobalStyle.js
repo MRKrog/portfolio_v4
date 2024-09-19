@@ -492,7 +492,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .gatsby-image-outer-wrapper {
-    height: 100%;
+    /* height: 100%; */
   }
 
   ${TransitionStyles};

@@ -283,12 +283,6 @@ const Nav = ({ isHome }) => {
                   classNames={fadeClass}
                   timeout={timeout}
                 >
-                  {/* <h4 
-                    ref={transitionRef}
-                    // style={{ fontSize: 18 }}
-                  >
-                    Michael Krog | My Portfolio
-                  </h4> */}
                   <>{Logo}</>
                 </CSSTransition>
               )}

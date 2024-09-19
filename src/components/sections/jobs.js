@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import { KEY_CODES } from '@utils';
@@ -14,23 +14,8 @@ const StyledJobsSection = styled.section`
     z-index: -1;
     left: 0;
     top: 5rem;
-    font-size: 14rem;
-    /* font-size: clamp(2rem, 100vw, 6rem); */
-    letter-spacing: -8px;
-
-  }
-
-  .test-circle {
-    bottom: 0;
-    position: absolute;
-    width: 62vw;
-    height: 83vh;
-    border-radius: 50%;
-    background: #ffffff8f;
-    left: 0;
-    opacity: .3;
-    z-index: -1;
-    transform: scaleX(0.8) scaleY(0.86) rotate(131deg);
+    font-size: clamp(2rem, 28vw, 14rem);
+    letter-spacing: -5px;
   }
 
   .inner {
@@ -40,6 +25,7 @@ const StyledJobsSection = styled.section`
 
     @media (max-width: 600px) {
       display: block;
+      padding-top: 110px;
     }
 
     // Prevent container from jumping
@@ -58,7 +44,7 @@ const StyledTabList = styled.div`
   list-style: none;
   display: flex;
 
-  @media (max-width: 600px) {
+  /* @media (max-width: 600px) {
     display: flex;
     overflow-x: auto;
     width: calc(100% + 100px);
@@ -70,7 +56,7 @@ const StyledTabList = styled.div`
     width: calc(100% + 50px);
     padding-left: 25px;
     margin-left: -25px;
-  }
+  } */
 
   li {
     &:first-of-type {
@@ -109,10 +95,6 @@ const StyledTabButton = styled.button`
   white-space: nowrap;
   letter-spacing: .1em;
 
-  &:first-child {
-    // border-left: 1px solid var(--m-lightest-gray);
-  }
-
   &:last-child {
     border: none;
   }
@@ -125,7 +107,6 @@ const StyledTabButton = styled.button`
     min-width: 120px;
     padding: 0 15px;
     border-left: 0;
-    border-bottom: 1px solid var(--m-dim-gray);
     text-align: center;
   }
 `;
@@ -138,13 +119,14 @@ const StyledTabPanels = styled.div`
 
   @media (max-width: 600px) {
     margin-left: 0;
+    margin-top: 0px;
   }
 `;
 
 const StyledTabPanel = styled.div`
   width: 100%;
   height: auto;
-  padding: 10px 5px;
+  padding: 10px 0px;
 
   ul {
     ${({ theme }) => theme.mixins.fancyList};
@@ -159,7 +141,6 @@ const StyledTabPanel = styled.div`
     line-height: 1.1; 
     margin: 0;
 
-    
     .company {
       color: var(--m-blue);
     }
@@ -175,6 +156,10 @@ const StyledTabPanel = styled.div`
   .skills-container {
     margin-left: 20px;
 
+    @media (max-width: 600px) {
+      margin-left: 0px;
+    }
+
     h5 {
       margin: 0;
       font-size: 18px;
@@ -184,7 +169,7 @@ const StyledTabPanel = styled.div`
 
     ul.skills-list {
       display: grid;
-      grid-template-columns: repeat(3, minmax(140px, 200px));
+      grid-template-columns: repeat(3, minmax(120px, 200px));
       grid-gap: 0 10px;
       padding: 0;
       margin: 15px 0 0 0;
@@ -205,7 +190,6 @@ const StyledTabPanel = styled.div`
           content: '•';
           position: absolute;
           left: 0;
-          // color: var(--m-blue);
           font-size: var(--fz-sm);
           line-height: 12px;
         }
@@ -297,8 +281,6 @@ const Jobs = () => {
 
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
-
-      {/* <div className="test-circle"></div> */}
        
       <h2 className="m-section-title">day job</h2>
 
@@ -308,13 +290,11 @@ const Jobs = () => {
           {jobsData &&
             jobsData.map(({ node }, i) => {
               const { company } = node.frontmatter;
-
               return (
                 <StyledTabButton
                   key={i}
                   $isActive={activeTabId === i}
                   onClick={() => setActiveTabId(i)}
-                  // ref={el => (tabs.current[i] = el)}
                   id={`tab-${i}`}
                   role="tab"
                   tabIndex={activeTabId === i ? '0' : '-1'}
@@ -330,7 +310,6 @@ const Jobs = () => {
         <StyledTabPanels>
           {jobsData &&
             jobsData.map(({ node }, i) => {
-              // const { frontmatter, html } = node;
               const { frontmatter = {}, html } = node || {};
               const { title, url, company, range, companyFull, skills } = frontmatter;
               
@@ -357,7 +336,6 @@ const Jobs = () => {
                     <h3>
                       <span>{title}: </span>
                       <span className="company">
-                        {/* &nbsp;@&nbsp; */}
                         &nbsp;
                         <a href={url} className="inline-link">
                           {companyFull}
@@ -381,8 +359,6 @@ const Jobs = () => {
               );
             })}
         </StyledTabPanels>
-
-
 
       </div>
     </StyledJobsSection>

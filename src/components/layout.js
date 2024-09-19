@@ -45,6 +45,8 @@ const Layout = ({ children, location }) => {
     handleExternalLinks();
   }, [isLoading]);
 
+  console.log('isLoading', isLoading)
+  const test = true
   return (
     <>
       <Head />
@@ -57,6 +59,7 @@ const Layout = ({ children, location }) => {
             Skip to Content
           </a>
 
+          {/* { test ? ( */}
           {isLoading && isHome ? (
             <Loader 
               finishLoading={
@@ -67,7 +70,7 @@ const Layout = ({ children, location }) => {
             <StyledContent>
               <Nav isHome={isHome} />
               <Social isHome={isHome} />
-              {/* <Email isHome={isHome} /> */}
+              
 
               <div id="content">
                 {children}
@@ -80,6 +83,8 @@ const Layout = ({ children, location }) => {
     </>
   );
 };
+
+// {/* <Email isHome={isHome} /> */}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

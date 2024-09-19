@@ -16,7 +16,7 @@ const IndexPage = ({ location }) => (
       <Featured />
       {/* <Projects /> */}
       <Contact />   
-      <CursorFollow />
+      {/* <CursorFollow /> */}
     </StyledMainContainer>
   </Layout>
 );

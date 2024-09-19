@@ -3,8 +3,7 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
 import styled from 'styled-components';
-// import { IconLoader } from '@components/icons';
-import { MLogo, IconLogo, IconHex } from '@components/icons';
+import { MLogo } from '@components/icons';
 
 const StyledLoader = styled.div`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -16,14 +15,12 @@ const StyledLoader = styled.div`
   width: 100%;
   height: 100%;
   background-color: var(--m-light-gray);
-  // background-color: var(--dark-navy);
   z-index: 99;
 
   .logo-wrapper {
     width: max-content;
     max-width: 100px;
     transition: var(--transition);
-    opacity: {isMounted ? 1 : 0};
     opacity: ${({ $isMounted }) => ($isMounted ? 1 : 0)};
     svg {
       display: block;

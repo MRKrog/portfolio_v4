@@ -46,7 +46,9 @@ const StyledHamburgerButton = styled.button`
     width: var(--hamburger-width);
     height: 2px;
     border-radius: var(--border-radius);
-    background-color: var(--m-blue);
+    /* background-color: var(--m-blue); */
+    /* background-color: var(--m-medium-black); */
+    background-color: var(--m-light-black);
     transition-duration: 0.22s;
     transition-property: transform;
     transition-delay: ${({ $menuOpen }) => ($menuOpen ? `0.12s` : `0s`)};
@@ -64,13 +66,15 @@ const StyledHamburgerButton = styled.button`
       width: var(--hamburger-width);
       height: 2px;
       border-radius: 4px;
-      background-color: var(--m-blue);
+      background-color: var(--m-light-black);
+      /* background-color: var(--m-medium-black); */
+      /* background-color: var(--m-blue); */
       transition-timing-function: ease;
       transition-duration: 0.15s;
       transition-property: transform;
     }
     &:before {
-      width: ${({ $menuOpen }) => ($menuOpen ? `100%` : `120%`)};
+      width: ${({ $menuOpen }) => ($menuOpen ? `100%` : `80%`)};
       top: ${({ $menuOpen }) => ($menuOpen ? `0` : `-10px`)};
       opacity: ${({ $menuOpen }) => ($menuOpen ? 0 : 1)};
       transition: ${({ $menuOpen }) => $menuOpen ? 'var(--ham-before-active)' : 'var(--ham-before)'};
@@ -97,7 +101,8 @@ const StyledSidebar = styled.aside`
     width: min(75vw, 400px);
     height: 100vh;
     outline: 0;
-    background-color: var(--light-navy);
+    /* background-color: var(--light-navy); */
+    background-color: var(--m-light-gray);
     box-shadow: -10px 0px 30px -15px var(--navy-shadow);
     z-index: 9;
     transform: translateX(${({ $menuOpen }) => ($menuOpen ? 0 : 100)}vw);
@@ -114,7 +119,7 @@ const StyledSidebar = styled.aside`
     text-align: center;
   }
 
-  ol {
+  ul {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -123,15 +128,15 @@ const StyledSidebar = styled.aside`
     li {
       position: relative;
       margin: 0 auto 20px;
-      counter-increment: item 1;
-      font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
+      /* counter-increment: item 1; */
+      font-size: clamp(var(--fz-xxl), 4vw, var(--fz-xxl));
 
       @media (max-width: 600px) {
-        margin: 0 auto 10px;
+        /* margin: 0 auto 10px; */
       }
 
       &:before {
-        content: '0' counter(item) '.';
+        /* content: '0' counter(item) '.'; */
         display: block;
         margin-bottom: 5px;
         color: var(--m-blue);
@@ -254,7 +259,7 @@ const Menu = () => {
         <StyledSidebar $menuOpen={menuOpen} aria-hidden={!menuOpen} tabIndex={menuOpen ? 1 : -1}>
           <nav ref={navRef}>
             {navLinks && (
-              <ol>
+              <ul>
                 {navLinks.map(({ url, name }, i) => (
                   <li key={i}>
                     <Link to={url} onClick={() => setMenuOpen(false)}>
@@ -262,7 +267,7 @@ const Menu = () => {
                     </Link>
                   </li>
                 ))}
-              </ol>
+              </ul>
             )}
 
             <a href="/resume.pdf" className="resume-link">

@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
-import meImg from '../../images/me.jpg';
-// import meImg from '../../images/portfolio_me.jpg';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -36,8 +34,8 @@ const StyledAboutSection = styled.section`
     z-index: -1;
     top: 1rem;
     right: 0;
-    font-size: 15rem;
-    letter-spacing: -10px;
+    font-size: clamp(2rem, 30vw, 15rem);
+    letter-spacing: -5px;
   }
 
 
@@ -62,8 +60,8 @@ const StyledPic = styled.div`
   align-items: end;
 
   @media (max-width: 768px) {
-    margin: 50px auto 0;
-    width: 70%;
+    margin: 25px auto 0;
+    width: 100%;
   }
 
   .wrapper {
@@ -80,12 +78,11 @@ const StyledPic = styled.div`
       mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1);
       transition: var(--transition);
-      // transform: scaleX(-1);
     }
 
     &:before,
     &:after {
-      /* content: ''; */
+      content: '';
       display: block;
       position: absolute;
       width: 100%;
@@ -102,7 +99,7 @@ const StyledPic = styled.div`
     }
 
     &:after {
-      border: 1px solid var(--m-gray);
+      border: 1px solid #e4e4e4;
       top: 14px;
       left: 14px;
       z-index: -1;
@@ -132,7 +129,10 @@ const StyledText = styled.div`
     color: var(--m-dim-gray);
     font-family: var(--font-mono);
     font-size: var(--fz-sm);
-    font-weight: 300;
+    font-weight: bold;
+    @media (max-width: 768px) {
+      font-size: var(--fz-xxs);
+    }
   }
 
   .next-button {
