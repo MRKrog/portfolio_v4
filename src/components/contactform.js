@@ -47,7 +47,7 @@ const ContactForm = () => {
     <div style={{ maxWidth: "600px", margin: "0 auto" }}>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: "1em", textAlign: 'left' }}>
-          <label htmlFor="email" style={{ fontSize: 14 }}>Email:</label>
+          <label htmlFor="email" style={{ fontSize: 14 }}>Your Email:</label>
           <input
             type="email"
             id="email"

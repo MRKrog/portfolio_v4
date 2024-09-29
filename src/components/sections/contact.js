@@ -61,7 +61,7 @@ const Contact = () => {
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
 
-      <h2 className="m-section-title">contact</h2>
+      <h2 className="m-section-title">Contact</h2>
 
       <div className="contact-copy">
         <p>
