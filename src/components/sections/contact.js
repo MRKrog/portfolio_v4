@@ -61,11 +61,11 @@ const Contact = () => {
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
 
-      <h2 className="m-section-title">contact</h2>
+      <h2 className="m-section-title">Contact</h2>
 
       <div className="contact-copy">
         <p>
-          Feel free to drop me a message. 
+          Feel free to drop me a message.
           Whether you have a question or just want to say hi, I’m always happy to connect!
         </p>
       </div>

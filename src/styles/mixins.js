@@ -91,10 +91,8 @@ const mixins = {
     background-color: transparent;
     border: 1px solid var(--m-blue);
     border-radius: var(--border-radius);
-    padding: 0.75rem 1rem;
+    padding: 0.7rem 1rem;
     font-size: var(--fz-xs);
-    // font-family: var(--font-mono);
-    // font-family: var(--m-font-primary);
     line-height: 1;
     text-decoration: none;
     transition: var(--transition);
@@ -102,8 +100,9 @@ const mixins = {
     &:hover,
     &:focus-visible {
       outline: none;
-      box-shadow: 3px 3px 0 0 var(--m-blue);
-      transform: translate(-4px, -4px);
+      opacity: .7;
+      /* box-shadow: 3px 3px 0 0 var(--m-blue); */
+      /* transform: translate(-4px, -4px); */
     }
     &:after {
       display: none !important;

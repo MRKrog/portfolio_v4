@@ -400,11 +400,6 @@ const StyledProject = styled.li`
         height: 20px;
       }
     }
-
-    .cta {
-      ${({ theme }) => theme.mixins.smallButton};
-      margin: 10px;
-    }
   }
 `;
 
@@ -496,24 +491,6 @@ const Featured = () => {
                         ))}
                       </ul>
                     )}
-                  
-                    <div className="project-links">
-                      {/* {cta && (
-                        <a href={cta} aria-label="Course Link" className="cta">
-                          Learn More
-                        </a>
-                      )} */}
-                      {/* {github && (
-                        <a href={github} aria-label="GitHub Link">
-                          <Icon name="GitHub" />
-                        </a>
-                      )} */}
-                      {/* {external && !cta && (
-                        <a href={external} aria-label="External Link" className="external">
-                          <Icon name="External" />
-                        </a>
-                      )} */}
-                    </div>
                     
                   </div>
                 </div>

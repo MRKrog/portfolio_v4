@@ -14,6 +14,7 @@ skills:
   - UX/UI
 ---
 
-- Worked at a digital agency specializing in web development, eCommerce, and marketing.
-- Developed and designed responsive eCommerce sites using: WordPress, Shopify
-- Managed projects from conception to production.
+- Collaborated with clients and internal teams to gather requirements and translate them into functional web solutions tailored to business needs.
+- Developed custom themes and templates for WordPress and Shopify to provide clients with unique, branded online stores.
+- Contributed to the overall design and brand strategy by ensuring the visual consistency of websites with client guidelines and marketing objectives.
+- Optimized websites for search engine visibility (SEO), resulting in improved rankings and organic traffic growth.
