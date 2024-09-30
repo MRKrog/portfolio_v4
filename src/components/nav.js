@@ -167,7 +167,7 @@ const StyledLinks = styled.div`
 
 const Nav = ({ isHome }) => {
   const transitionRef = useRef(null);
-  // const resumeRef = useRef(null);
+  const resumeRef = useRef(null);
   const menuRef = useRef(null);
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
@@ -314,13 +314,13 @@ const Nav = ({ isHome }) => {
               </ol>
 
               <TransitionGroup component={null}>
-                {/* {isMounted && (
+                {isMounted && (
                   <CSSTransition nodeRef={resumeRef} classNames={fadeDownClass} timeout={timeout}>
                     <div ref={resumeRef} style={{ transitionDelay: `${isHome ? navLinks.length * 100 : 0}ms` }}>
                       {ResumeLink}
                     </div>
                   </CSSTransition>
-                )} */}
+                )}
               </TransitionGroup>
             </StyledLinks>
 

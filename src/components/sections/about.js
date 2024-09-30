@@ -10,39 +10,24 @@ const StyledAboutSection = styled.section`
 
   .name-gradient {
     background: linear-gradient(90deg, #0088CC, #00d1ff);
-    // background: linear-gradient(90deg, #6a00ff, #00d1ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
   }
 
-  .test-circle {
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 50vw; // Change as needed
-    height: 85vh; // Change as needed
-    border-radius: 50%;
-    background: #ffffff8f;
-    opacity: .3;
-    z-index: -1;
-    transform: scaleX(0.8) scaleY(0.76) rotate(45deg); // Change as needed
-  }
-
   h2 {
     z-index: -1;
-    top: 1rem;
+    top: 2rem;
     right: 0;
-    font-size: clamp(2rem, 30vw, 15rem);
+    font-size: clamp(2rem, 30vw, 14rem);
     letter-spacing: -5px;
   }
-
 
   .inner {
     display: grid;
     grid-template-columns: 1fr .8fr;
-    grid-gap: 10px;
+    grid-gap: 15px;
     position: relative;
     z-index: 2;
 
@@ -104,7 +89,6 @@ const StyledPic = styled.div`
       left: 14px;
       z-index: -1;
     }
-
   }
 `;
 
@@ -129,7 +113,7 @@ const StyledText = styled.div`
     color: var(--m-dim-gray);
     font-family: var(--font-mono);
     font-size: var(--fz-sm);
-    font-weight: bold;
+    font-weight: 300;
     @media (max-width: 768px) {
       font-size: var(--fz-xxs);
     }
@@ -161,8 +145,6 @@ const About = () => {
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
-      
-      {/* <div className="test-circle"></div> */}
       
       <h2 className="m-section-title">intro</h2>
 

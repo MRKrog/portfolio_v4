@@ -14,7 +14,7 @@ const StyledJobsSection = styled.section`
     z-index: -1;
     left: 0;
     top: 5rem;
-    font-size: clamp(2rem, 28vw, 14rem);
+    font-size: clamp(2rem, 28vw, 13rem);
     letter-spacing: -5px;
   }
 
