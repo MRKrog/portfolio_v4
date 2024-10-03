@@ -17,7 +17,6 @@ const StyledAboutSection = styled.section`
   }
 
   h2 {
-    
     z-index: -1;
     top: 2rem;
     right: 0;
