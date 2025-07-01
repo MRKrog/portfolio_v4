@@ -160,9 +160,7 @@ const About = () => {
             <h5 className="about-subtitle">Full Stack Developer | Designer | Problem Solver</h5>
 
             <p className="about-copy">
-              Originally from the Chicago area, I’ve always been passionate about understanding how things work. Growing up, 
-              I loved inspecting webpage code and recreating it. This curiosity led me to study at DePaul University, and after graduation, 
-              I began working as a web developer and designer.
+              Orignally from the Chicago area, I’ve always been the type to take things apart just to see how they tick. My fascination with the web started early, inspecting and rebuilding sites for fun. That drive to understand and create led me to DePaul University, and now fuels my work as a web developer and designer.
             </p>
 
             <p className="about-copy">
