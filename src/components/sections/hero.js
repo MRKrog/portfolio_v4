@@ -80,9 +80,9 @@ const Hero = () => {
   const two = <h4>Crafting clever code, one commit at a time</h4>
   const three = (
     <p>
-      Welcome to my portfolio! I'm a <b>developer</b> skilled in building interactive web experiences, 
-      from dynamic single-page <b>applications</b> to full-scale <b>web platforms</b>. 
-      Explore <a href="/#projects">my projects</a>, learn more <a href="/#about">about me</a>, and feel free to reach out — <a href="/#contact">let's chat</a>
+      Welcome! I'm a <strong>developer</strong> passionate about building interactive web experiences 
+      <br/>from dynamic single page <strong>apps</strong> to robust <strong>web platforms</strong>.<br/>
+      <a href="/#projects">See my work</a>, <a href="/#about">get to know me</a>, or <a href="/#contact">let's connect</a>!
     </p>
   );
 
