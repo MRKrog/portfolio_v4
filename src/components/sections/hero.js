@@ -77,7 +77,7 @@ const Hero = () => {
   }, []);
 
   const one = <h3>Michael Krog</h3>
-  const two = <h4>Crafting clever code, one commit at a time</h4>
+  const two = <h4>Transforming concepts into code</h4>
   const three = (
     <p>
       Welcome! I'm a <strong>developer</strong> passionate about building interactive web experiences 
