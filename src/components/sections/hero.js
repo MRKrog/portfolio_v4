@@ -59,6 +59,18 @@ const StyledHeroSection = styled.section`
     ${({ theme }) => theme.mixins.bigButton};
     margin-top: 50px;
   }
+  
+  .hero-cta-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+
+    .hero-btn {
+      ${({ theme }) => theme.mixins.smallButton};
+      font-size: var(--fz-xs);
+    }
+  }
 `;
 
 
@@ -83,7 +95,11 @@ const Hero = () => {
     <p>
       Welcome! I'm a <strong>developer</strong> passionate about building interactive web experiences 
       <br/>from dynamic single page <strong>apps</strong> to robust <strong>web platforms</strong>.<br/>
-      <a href="/#projects">See my work</a>, <a href="/#about">get to know me</a>, or <a href="/#contact">let's connect</a>!
+      <div className="hero-cta-buttons">
+        <a className="hero-btn" href="/#projects">See my work</a>
+        <a className="hero-btn" href="/#about">Get to know me</a>
+        <a className="hero-btn" href="/#contact">Let's connect</a>
+      </div>
     </p>
   );
 
