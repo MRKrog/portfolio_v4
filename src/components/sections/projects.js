@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
+import Slider from 'react-slick';
+
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
@@ -182,6 +184,12 @@ const Projects = () => {
               tech
               github
               external
+              images {
+                childImageSharp {
+                  gatsbyImageData(width: 900, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                }
+                publicURL
+              }
             }
             html
           }
@@ -195,6 +203,18 @@ const Projects = () => {
   const revealArchiveLink = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [carouselImages, setCarouselImages] = useState([]);
+
+  const openCarousel = images => {
+    setCarouselImages(images || []);
+    setModalOpen(true);
+  };
+  const closeCarousel = () => {
+    setModalOpen(false);
+    setCarouselImages([]);
+  };
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -218,7 +238,7 @@ const Projects = () => {
     const { github, external, title, tech } = frontmatter;
 
     return (
-      <div className="project-inner">
+      <div className="project-inner" onClick={() => openCarousel(frontmatter.images)}>
         <header>
           <div className="project-top">
             <div className="folder">
@@ -308,6 +328,21 @@ const Projects = () => {
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
         Show {showMore ? 'Less' : 'More'}
       </button>
+
+      {modalOpen && (
+        <div className="modal-overlay" onClick={closeCarousel}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <Slider dots infinite speed={500} slidesToShow={1} slidesToScroll={1}>
+              {carouselImages.map((img, idx) => (
+                <div key={idx}>
+                  <img src={img} alt={`Project screenshot ${idx + 1}`} style={{width: '100%', borderRadius: '8px'}} />
+                </div>
+              ))}
+            </Slider>
+            <button className="modal-close" onClick={closeCarousel}>Close</button>
+          </div>
+        </div>
+      )}
     </StyledProjectsSection>
   );
 };

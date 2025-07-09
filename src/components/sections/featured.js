@@ -1,11 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { Icon as IconifyIcon } from '@iconify/react';
 
 const StyledShowcaseSection = styled.section`
   position: relative;
@@ -403,6 +407,39 @@ const StyledProject = styled.li`
   }
 `;
 
+const CustomArrow = ({ className, style, onClick, direction }) => (
+  <button
+    className={className}
+    style={{
+      ...style,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      // background: '#0094e0',
+      color: '#fff',
+      borderRadius: '50%',
+      border: 'none',
+      width: '2.5rem',
+      height: '2.5rem',
+      zIndex: 2,
+      top: '50%',
+      transform: 'translateY(-50%)',
+      // boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+      fontSize: '1.7rem',
+      // transition: 'background 0.2s, color 0.2s',
+      cursor: 'pointer',
+    }}
+    onClick={onClick}
+    aria-label={direction === 'next' ? 'Next slide' : 'Previous slide'}
+  >
+    {direction === 'next' ? (
+      <IconifyIcon icon="fluent:arrow-right-12-filled" width="1.5em" height="1.5em" />
+    ) : (
+      <IconifyIcon icon="fluent:arrow-left-12-filled" width="1.5em" height="1.5em" />
+    )}
+  </button>
+);
+
 const Featured = () => {
   const data = useStaticQuery(graphql`
     {
@@ -423,6 +460,17 @@ const Featured = () => {
               github
               external
               cta
+              images {
+                childImageSharp {
+                  gatsbyImageData(width: 900, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                }
+                publicURL
+              }
+              modalCopy
+              modalLinks {
+                label
+                url
+              }
             }
             html
           }
@@ -431,10 +479,24 @@ const Featured = () => {
     }
   `);
 
+  console.log(data);
+
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({ images: [], modalCopy: '', modalLinks: [] });
+
+  const openModal = (images, modalCopy, modalLinks) => {
+    setModalData({ images: images || [], modalCopy: modalCopy || '', modalLinks: modalLinks || [] });
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalData({ images: [], modalCopy: '', modalLinks: [] });
+  };
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -456,13 +518,12 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, cover, cta, images, modalCopy, modalLinks } = frontmatter;
             const image = getImage(cover);
 
             return (
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
-                  
                   <a href={external ? external : github ? github : '#'} className="topLink mobile" target='_blank' rel="noreferrer">
                     <div className="triangle"></div>
                     {external && !cta && (
@@ -496,10 +557,22 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'} target='_blank' rel="noreferrer">
+                  <a
+                    href={external ? external : github ? github : '#'}
+                    target='_blank'
+                    rel="noreferrer"
+                    onClick={e => e.stopPropagation()} // Prevent modal on external link click
+                    className="image-external-link"
+                  >
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
-
+                  {/* Overlay div to catch image clicks and open modal */}
+                  <div
+                    className="image-modal-overlay"
+                    style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, cursor: 'zoom-in', zIndex: 10 }}
+                    onClick={() => openModal(images, modalCopy, modalLinks)}
+                    aria-label={`Open details for ${title}`}
+                  />
                   <div className="topLink desktop">
                     <div className="triangle"></div>
                     {external && !cta && (
@@ -514,8 +587,49 @@ const Featured = () => {
             );
           })}
       </StyledProjectsGrid>
-      
 
+      {modalOpen && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <Slider
+              {...{
+                dots: false,
+                arrows: true,
+                infinite: true,
+                speed: 700,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                centerMode: true,
+                centerPadding: '0px',
+                nextArrow: <CustomArrow direction="next" />,
+                prevArrow: <CustomArrow direction="prev" />,
+              }}
+            >
+              {modalData.images.map((img, idx) => (
+                <div key={idx}>
+                  {img && img.childImageSharp ? (
+                    <GatsbyImage 
+                      image={img.childImageSharp.gatsbyImageData} 
+                      alt={`Screenshot ${idx + 1}`} 
+                      imgStyle={{ objectFit: 'contain' }}
+                    />
+                  ) : img && img.publicURL ? (
+                    <img src={img.publicURL} alt={`Screenshot ${idx + 1}`} style={{width: '100%', borderRadius: '8px'}} />
+                  ) : null}
+                </div>
+              ))}
+            </Slider>
+            <div className="modal-copy" style={{margin: '1.5rem 0', color: '#fff', fontSize: '1.1rem'}}>{modalData.modalCopy}</div>
+            <div className="modal-links" style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+              {modalData.modalLinks.map((link, idx) => (
+                <a key={idx} href={link.url} target="_blank" rel="noopener noreferrer" className="modal-link-btn" style={{background: '#0094e0', color: '#fff', padding: '0.5em 1.2em', borderRadius: '1.2em', textDecoration: 'none', fontWeight: 500}}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       </StyledShowcaseSection>
     </section>

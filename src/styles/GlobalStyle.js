@@ -4,6 +4,9 @@ import variables from './variables';
 import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 const GlobalStyle = createGlobalStyle`
   ${fonts};
   ${variables};
@@ -498,6 +501,47 @@ const GlobalStyle = createGlobalStyle`
   ${TransitionStyles};
 
   ${PrismStyles};
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #222;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 90vw;
+  max-width: 1000px;
+  max-height: 80vh;
+  overflow: auto;
+  position: relative;
+}
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #0094e0;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  content: '';
+}
 `;
 
 export default GlobalStyle;
