@@ -98,6 +98,14 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
             test: /miniraf/,
             use: loaders.null(),
           },
+          {
+            test: /vanta/,
+            use: loaders.null(),
+          },
+          {
+            test: /three/,
+            use: loaders.null(),
+          },
         ],
       },
     });
