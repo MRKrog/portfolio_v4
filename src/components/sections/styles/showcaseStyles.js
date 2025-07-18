@@ -106,7 +106,7 @@ export const StyledProject = styled.li`
 
       .triangle {
         border-right: 80px solid transparent;
-        border-top: 80px solidrgb(52, 152, 219, 0.6);
+        border-top: 80px solid #3498db;
         right: auto;
         border-bottom: auto;
         border-top-left-radius: 4px;
