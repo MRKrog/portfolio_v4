@@ -6,7 +6,7 @@ import {
   Hero, 
   About, 
   Jobs, 
-  Featured, 
+  Showcase, 
   // Projects, 
   Contact, 
   CursorFollow 
@@ -25,7 +25,7 @@ const IndexPage = ({ location }) => {
         <Hero />
         <About />
         <Jobs />
-        <Featured />
+        <Showcase />
         {/* <Projects /> */}
         <Contact />   
         {isDesktop && <CursorFollow />}

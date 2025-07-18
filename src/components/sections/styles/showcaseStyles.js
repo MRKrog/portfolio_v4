@@ -1,13 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
-import sr from '@utils/sr';
-import { srConfig } from '@config';
-import { Icon } from '@components/icons';
-import { usePrefersReducedMotion } from '@hooks';
 
-const StyledShowcaseSection = styled.section`
+export const StyledShowcaseSection = styled.section`
   position: relative;
 
   h2 {
@@ -18,10 +11,9 @@ const StyledShowcaseSection = styled.section`
     letter-spacing: -3px;
     margin: 0;
   }
-
 `;
 
-const StyledProjectsGrid = styled.ul`
+export const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
 
   a {
@@ -30,7 +22,7 @@ const StyledProjectsGrid = styled.ul`
   }
 `;
 
-const StyledProject = styled.li`
+export const StyledProject = styled.li`
   position: relative;
   display: grid;
   grid-gap: 10px;
@@ -114,7 +106,7 @@ const StyledProject = styled.li`
 
       .triangle {
         border-right: 80px solid transparent;
-        border-top: 80px solid #3498db;
+        border-top: 80px solidrgb(52, 152, 219, 0.6);
         right: auto;
         border-bottom: auto;
         border-top-left-radius: 4px;
@@ -401,125 +393,4 @@ const StyledProject = styled.li`
       }
     }
   }
-`;
-
-const Featured = () => {
-  const data = useStaticQuery(graphql`
-    {
-      featured: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/featured/" } }
-        sort: { fields: [frontmatter___date], order: ASC }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              title
-              cover {
-                childImageSharp {
-                  gatsbyImageData(width: 831, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
-                }
-              }
-              tech
-              github
-              external
-              cta
-            }
-            html
-          }
-        }
-      }
-    }
-  `);
-
-  const featuredProjects = data.featured.edges.filter(({ node }) => node);
-  const revealTitle = useRef(null);
-  const revealProjects = useRef([]);
-  const prefersReducedMotion = usePrefersReducedMotion();
-
-  useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    sr.reveal(revealTitle.current, srConfig());
-    revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return (
-    <section id="projects">
-      <StyledShowcaseSection>
-
-      <h2 className="m-section-title">showcase</h2>
-
-      <StyledProjectsGrid>
-        {featuredProjects &&
-          featuredProjects.map(({ node }, i) => {
-            const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
-            const image = getImage(cover);
-
-            return (
-              <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
-                <div className="project-content">
-                  
-                  <a href={external ? external : github ? github : '#'} className="topLink mobile" target='_blank' rel="noreferrer">
-                    <div className="triangle"></div>
-                    {external && !cta && (
-                    <div className="external">
-                      <Icon name="External" />
-                    </div>
-                    )}
-                  </a>
-
-                  <div>
-                    <p className="project-overline">Featured Project</p>
-
-                    <h3 className="project-title">
-                      <a href={external}>{title}</a>
-                    </h3>
-                  
-                    <div
-                      className="project-description"
-                      dangerouslySetInnerHTML={{ __html: html }}
-                    />
-
-                    {tech.length && (
-                      <ul className="project-tech-list">
-                        {tech.map((tech, i) => (
-                          <li key={i}>{tech}</li>
-                        ))}
-                      </ul>
-                    )}
-                    
-                  </div>
-                </div>
-
-                <div className="project-image">
-                  <a href={external ? external : github ? github : '#'} target='_blank' rel="noreferrer">
-                    <GatsbyImage image={image} alt={title} className="img" />
-                  </a>
-
-                  <div className="topLink desktop">
-                    <div className="triangle"></div>
-                    {external && !cta && (
-                    <div className="external">
-                      <Icon name="External" />
-                    </div>
-                  )}
-                  </div>
-                </div>
-
-              </StyledProject>
-            );
-          })}
-      </StyledProjectsGrid>
-      
-
-
-      </StyledShowcaseSection>
-    </section>
-  );
-};
-
-export default Featured;
+`; 

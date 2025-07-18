@@ -7,12 +7,15 @@ export { default as Side } from './side';
 export { default as Social } from './social';
 export { default as Email } from './email';
 export { default as Footer } from './footer';
+
+// Sections
 export { default as Hero } from './sections/hero';
 export { default as About } from './sections/about';
 export { default as Jobs } from './sections/jobs';
-export { default as Featured } from './sections/featured';
-export { default as Projects } from './sections/projects';
+export { default as Showcase } from './sections/showcase';
 export { default as Contact } from './sections/contact';
+
+// export { default as Projects } from './sections/projects';
 
 export { default as CursorFollow } from './cursorfollow';
 export { default as ContactForm } from './contactform';

@@ -70,6 +70,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   });
 };
 
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    type MarkdownRemarkFrontmatter {
+      images: [File] @fileByRelativePath
+      videos: [String]
+      videoLinks: [String]
+    }
+  `);
+};
+
 // https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   // https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
@@ -87,6 +98,14 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
           },
           {
             test: /miniraf/,
+            use: loaders.null(),
+          },
+          {
+            test: /vanta/,
+            use: loaders.null(),
+          },
+          {
+            test: /three/,
             use: loaders.null(),
           },
         ],

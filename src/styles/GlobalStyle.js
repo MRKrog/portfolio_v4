@@ -4,6 +4,9 @@ import variables from './variables';
 import TransitionStyles from './TransitionStyles';
 import PrismStyles from './PrismStyles';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 const GlobalStyle = createGlobalStyle`
   ${fonts};
   ${variables};
@@ -498,6 +501,53 @@ const GlobalStyle = createGlobalStyle`
   ${TransitionStyles};
 
   ${PrismStyles};
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.modal-content {
+  background: #222;
+  padding: 2rem 2rem 2rem 2rem;
+  border-radius: 8px;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 100%;
+  max-width: 900px;
+  overflow: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-link-btn {
+  background: var(--m-blue);
+  border: 1px solid var(--m-blue);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1.2rem;
+  font-size: var(--fz-sm);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  opacity: 1;
+}
+.modal-link-btn:hover {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  content: '';
+}
 `;
 
 export default GlobalStyle;

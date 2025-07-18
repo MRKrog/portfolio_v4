@@ -65,8 +65,8 @@ const Contact = () => {
 
       <div className="contact-copy">
         <p>
-          Feel free to drop me a message.
-          Whether you have a question or just want to say hi, I’m always happy to connect!
+          Let’s connect—whether you want to talk code, collaborate, or just chat.
+          My inbox is always open. Drop a message and let’s start a conversation!
         </p>
       </div>
 

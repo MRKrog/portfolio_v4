@@ -20,6 +20,11 @@ import {
 import { Icon as IconifyIcon } from "@iconify/react";
 
 const Icon = ({ name }) => {
+  // Check if it's an Iconify icon (contains colon)
+  if (name.includes(':')) {
+    return <IconifyIcon icon={name} width="1.2em" height="1.2em" />;
+  }
+  
   switch (name) {
     case 'MLogo':
       return <MLogo />;
