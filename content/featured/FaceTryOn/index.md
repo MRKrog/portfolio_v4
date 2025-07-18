@@ -9,12 +9,13 @@ tech:
   - Three.js
   - 8th Wall
   - Face Tracking
-videoLinks:
-  - "https://www.youtube.com/shorts/O6n9rN-Nz8o?controls=0&modestbranding=1&rel=0"
-  - "https://www.youtube.com/watch?v=dQw4w9WgXcQ" # rick roll
+images:
+  - ./test2.jpg
+videos:
+  - "https://portfolio-assets-mk.s3.amazonaws.com/videos/ar_glasses_compressed.mp4"
 modalCopy:
   - "AR glasses try-on interface showcasing real-time face tracking and virtual sunglasses overlay"
-  - "Demo video showing the AR experience in action with different frame styles and real-time rendering"
+  - "Live demo of the AR glasses try-on experience with real-time face tracking and frame switching"
 modalLinks:
   - null
   - null
