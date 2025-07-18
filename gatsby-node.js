@@ -75,6 +75,8 @@ exports.createSchemaCustomization = ({ actions }) => {
   createTypes(`
     type MarkdownRemarkFrontmatter {
       images: [File] @fileByRelativePath
+      videos: [String]
+      videoLinks: [String]
     }
   `);
 };

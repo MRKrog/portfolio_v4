@@ -505,37 +505,43 @@ const GlobalStyle = createGlobalStyle`
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  padding: 1rem;
 }
 .modal-content {
   background: #222;
-  padding: 2rem;
-  border-radius: 12px;
+  padding: 2rem 2rem 2rem 2rem;
+  border-radius: 8px;
   max-width: 90vw;
-  max-width: 1000px;
-  max-height: 80vh;
+  max-height: 90vh;
+  width: 100%;
+  max-width: 900px;
   overflow: auto;
   position: relative;
-}
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: #0094e0;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 2.2rem;
-  height: 2.2rem;
-  font-size: 1.2rem;
-  cursor: pointer;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+}
+
+.modal-link-btn {
+  background: var(--m-blue);
+  border: 1px solid var(--m-blue);
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1.2rem;
+  font-size: var(--fz-sm);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+  opacity: 1;
+}
+.modal-link-btn:hover {
+  color: #fff;
+  opacity: 0.8;
 }
 
 .slick-prev:before,

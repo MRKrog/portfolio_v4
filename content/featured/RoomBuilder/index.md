@@ -1,7 +1,7 @@
 ---
 date: '1'
 title: '3D Room Builder'
-cover: './Room3.jpg'
+cover: './Room1.jpg'
 github: ''
 external: 'https://mc.levar.io'
 tech:
@@ -10,16 +10,20 @@ tech:
   - Zustand
   - Typescript
 images:
+  - ./Room1.jpg
+  - ./Room2.jpg
   - ./Room3.jpg
-  - ./Room3.jpg
-  - ./Room3.jpg
-modalCopy: >
-  Explore the 3D Room Builder in detail! This interactive tool lets you design, customize, and visualize spaces in real time. Try different layouts, furniture, and styles, and see your ideas come to life in an immersive 3D environment.
+  - ./Room4.jpg
+modalCopy:
+  - "Welcome to the 3D Room Builder! This interactive tool lets you design and customize virtual spaces in real-time. Start by selecting room layouts and see your vision come to life."
+  - "Explore different furniture arrangements and layouts. Drag and drop furniture pieces, adjust lighting, and experiment with various styles to create your perfect space."
+  - "Launch your products directly into your space using augmented reality. Experience how furniture and decor look in your actual environment before making any purchases."
+  - "Save and share your creations with clients and collaborators. Add items to your cart and complete purchases directly from your designs. Export high-quality renders and manage multiple design projects all in one place."
 modalLinks:
-  - label: "Live Demo"
-    url: "https://mc.levar.io"
+  - '[{"label": "Try Live Demo", "url": "https://mrkrog.github.io/RoomBuilder/"}]'
+  - '[{"label": "Try Live Demo", "url": "https://mrkrog.github.io/RoomBuilder/"}]'
+  - '[{"label": "Try Live Demo", "url": "https://mrkrog.github.io/RoomBuilder/"}]'
+  - '[{"label": "Try Live Demo", "url": "https://mrkrog.github.io/RoomBuilder/"}]'
 ---
 
-
-
-A custom 3D room builder and designer that allows users to create and personalize virtual spaces interactively. Customizable design rooms with flexible layouts, furniture, and scenes, bringing interior design concepts to life in an immersive 3D experience.
+A custom 3D room builder and designer that allows users to create and personalize virtual spaces interactively. Customizable design rooms with flexible layouts, furniture, and scenes, bringing interior design concepts to life in an immersive 3D environment.
