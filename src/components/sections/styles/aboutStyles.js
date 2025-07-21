@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledAboutSection = styled.section`
   max-width: 900px;
+  margin: 0 auto 100px;
 
   .name-gradient {
     background: linear-gradient(90deg, #0088CC, #00d1ff);

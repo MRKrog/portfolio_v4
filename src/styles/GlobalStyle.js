@@ -548,6 +548,14 @@ const GlobalStyle = createGlobalStyle`
 .slick-next:before {
   content: '';
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+[id] {
+  scroll-margin-top: 80px; /* Adjust if your header is a different height */
+}
 `;
 
 export default GlobalStyle;

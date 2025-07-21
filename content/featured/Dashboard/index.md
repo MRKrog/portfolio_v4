@@ -1,6 +1,7 @@
 ---
 date: '3'
 title: '3D levAR Dashboard'
+slug: dashboard
 cover: './levarDashboard.jpg'
 external: 'https://app.levar.io/'
 cta: ''

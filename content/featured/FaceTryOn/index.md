@@ -1,7 +1,8 @@
 ---
 date: '4'
 title: 'AR Glasses Try-On'
-cover: './test2.jpg'
+slug: ar-glasses-try-on
+cover: './Face1.jpg'
 external: 'https://mikekrog-default-click.dev.8thwall.app/9five-try-on/'
 cta: ''
 tech:
@@ -9,15 +10,11 @@ tech:
   - Three.js
   - 8th Wall
   - Face Tracking
-images:
-  - ./test2.jpg
 videos:
   - "https://portfolio-assets-mk.s3.amazonaws.com/videos/ar_glasses_compressed.mp4"
 modalCopy:
-  - "AR glasses try-on interface showcasing real-time face tracking and virtual sunglasses overlay"
-  - "Live demo of the AR glasses try-on experience with real-time face tracking and frame switching"
+  - "Experience AR glasses try-on with real-time face tracking! See how different frames look on your face instantly with seamless frame switching and virtual overlay technology."
 modalLinks:
-  - null
   - null
 ---
 

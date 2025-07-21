@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledJobsSection = styled.section`
   max-width: 900px;
+  margin: 0 auto 100px;
 
   h2 {
     z-index: -1;

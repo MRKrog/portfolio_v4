@@ -236,13 +236,13 @@ const Nav = ({ isHome }) => {
       nodeRef: React.createRef(null),
     },
     {
-      name: 'day job',
-      url: '/#jobs',
+      name: 'showcase',
+      url: '/#showcase',
       nodeRef: React.createRef(null),
     },
     {
-      name: 'showcase',
-      url: '/#projects',
+      name: 'day job',
+      url: '/#jobs',
       nodeRef: React.createRef(null),
     },
     {

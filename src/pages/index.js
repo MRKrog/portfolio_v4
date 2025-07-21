@@ -7,7 +7,7 @@ import {
   About, 
   Jobs, 
   Showcase, 
-  // Projects, 
+  Projects, 
   Contact, 
   CursorFollow 
 } from '@components';
@@ -24,9 +24,9 @@ const IndexPage = ({ location }) => {
       <StyledMainContainer className="fillHeight">
         <Hero />
         <About />
-        <Jobs />
         <Showcase />
-        {/* <Projects /> */}
+        <Projects />
+        <Jobs />
         <Contact />   
         {isDesktop && <CursorFollow />}
       </StyledMainContainer>

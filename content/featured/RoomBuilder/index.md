@@ -1,7 +1,8 @@
 ---
 date: '1'
 title: '3D Room Builder'
-cover: './Room1.jpg'
+slug: 3d-room-builder
+coverVideo: 'https://portfolio-assets-mk.s3.amazonaws.com/videos/RoomVideo1_compressed.mp4'
 github: ''
 external: 'https://main.d3o7g5bu4b7d9n.amplifyapp.com/'
 tech:
@@ -9,18 +10,15 @@ tech:
   - Three.js
   - Zustand
   - Typescript
-images:
-  - ./Room1.jpg
-  - ./Room2.jpg
-  - ./Room3.jpg
-  - ./Room4.jpg
+videos:
+  - 'https://portfolio-assets-mk.s3.amazonaws.com/videos/RoomBuilderIntro_compressed.mp4'
+  - 'https://portfolio-assets-mk.s3.amazonaws.com/videos/RoomBuilderChangeView_compressed.mp4'
+  - 'https://portfolio-assets-mk.s3.amazonaws.com/videos/RoomBuilderAddToCart_compressed.mp4'
 modalCopy:
-  - "Welcome to the 3D Room Builder! This interactive tool lets you design and customize virtual spaces in real-time. Start by selecting room layouts and see your vision come to life."
-  - "Explore different furniture arrangements and layouts. Drag and drop furniture pieces, adjust lighting, and experiment with various styles to create your perfect space."
-  - "Launch your products directly into your space using augmented reality. Experience how furniture and decor look in your actual environment before making any purchases."
-  - "Save and share your creations with clients and collaborators. Add items to your cart and complete purchases directly from your designs. Export high-quality renders and manage multiple design projects all in one place."
+  - "Welcome to the 3D Room Builder! Build different room layouts and the comprehensive furniture catalog where you can browse and select individual products to add to your designs."
+  - "Watch the room view changing in action! Seamlessly switch between different room perspectives and camera angles to get the perfect view of your design from any angle."
+  - "See the seamless shopping experience! Add furniture and decor items directly to your cart from within the 3D environment. Complete purchases and manage your selections all in one place."
 modalLinks:
-  - '[{"label": "Try Live Demo", "url": "https://main.d3o7g5bu4b7d9n.amplifyapp.com/"}]'
   - '[{"label": "Try Live Demo", "url": "https://main.d3o7g5bu4b7d9n.amplifyapp.com/"}]'
   - '[{"label": "Try Live Demo", "url": "https://main.d3o7g5bu4b7d9n.amplifyapp.com/"}]'
   - '[{"label": "Try Live Demo", "url": "https://main.d3o7g5bu4b7d9n.amplifyapp.com/"}]'
