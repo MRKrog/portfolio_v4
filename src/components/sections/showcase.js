@@ -41,26 +41,6 @@ const CustomArrow = ({ className, style, onClick, direction }) => (
   </button>
 );
 
-// Helper function to extract YouTube video ID and create embed URL
-const getYouTubeEmbedUrl = (url) => {
-  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|shorts\/)([^#&?]*).*/;
-  const match = url.match(regExp);
-  const videoId = match && match[2].length === 11 ? match[2] : null;
-  
-  if (videoId) {
-    return `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}`;
-  }
-  return null;
-};
-
-// Helper function to check if URL is a YouTube link
-const isYouTubeUrl = (url) => {
-  return typeof url === 'string' && (
-    url.includes('youtube.com') || 
-    url.includes('youtu.be')
-  );
-};
-
 const Showcase = () => {
   const data = useStaticQuery(graphql`
     {
@@ -76,7 +56,9 @@ const Showcase = () => {
                 childImageSharp {
                   gatsbyImageData(width: 831, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                 }
+                publicURL
               }
+              coverVideo
               tech
               github
               external
@@ -126,8 +108,9 @@ const Showcase = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+
   return (
-    <section id="projects">
+    <section id="showcase">
       <StyledShowcaseSection>
 
       <h2 className="m-section-title">showcase</h2>
@@ -136,119 +119,149 @@ const Showcase = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta, images, videos, videoLinks, modalCopy, modalLinks } = frontmatter;
-            const image = getImage(cover);
+            const slug = frontmatter.slug || `showcase-${i+1}`;
+            const numericId = `showcase-${String(i + 1).padStart(2, '0')}`;
+            const { external, title, tech, github, cover, coverVideo, cta, images, videos, videoLinks, modalCopy, modalLinks } = frontmatter;
+          
+            const image = cover ? getImage(cover) : null;
             
-            // Merge all media types into a single array
+            // Merge all media types into a single array (videos first for stronger impact)
             const allMedia = [
-              ...(images || []),
               ...(videos || []),
-              ...(videoLinks || [])
+              ...(videoLinks || []),
+              ...(images || [])
             ];
 
             return (
-              <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
-                <div className="project-content">
-                  <a href={external ? external : github ? github : '#'} className="topLink mobile" target='_blank' rel="noreferrer">
-                    <div className="triangle"></div>
-                    {external && !cta && (
-                    <div className="external">
-                      <Icon name="External" />
-                    </div>
-                    )}
-                  </a>
+              <React.Fragment key={i}>
+                <span id={numericId} style={{ position: 'absolute', top: 0 }} aria-hidden="true"></span>
+                <StyledProject id={slug} ref={el => (revealProjects.current[i] = el)}>
+                  <div className="project-content">
+                    <a href={external ? external : github ? github : '#'} className="topLink mobile" target='_blank' rel="noreferrer">
+                      <div className="triangle"></div>
+                      {external && !cta && (
+                      <div className="external">
+                        <Icon name="External" />
+                      </div>
+                      )}
+                    </a>
 
-                  <div>
-                    <p className="project-overline">Featured Project</p>
+                    <div>
+                      <p className="project-overline">Featured Project</p>
 
-                    <h3 className="project-title">
-                      <a href={external}>{title}</a>
-                    </h3>
-                  
-                    <div
-                      className="project-description"
-                      dangerouslySetInnerHTML={{ __html: html }}
-                    />
-
-                    {tech.length && (
-                      <ul className="project-tech-list">
-                        {tech.map((tech, i) => (
-                          <li key={i}>{tech}</li>
-                        ))}
-                      </ul>
-                    )}
+                      <h3 className="project-title">
+                        <a href={external}>{title}</a>
+                      </h3>
                     
-                  </div>
-                </div>
+                      <div
+                        className="project-description"
+                        dangerouslySetInnerHTML={{ __html: html }}
+                      />
 
-                <div className="project-image">
-                  <a
-                    href={external ? external : github ? github : '#'}
-                    target='_blank'
-                    rel="noreferrer"
-                    onClick={e => e.stopPropagation()} // Prevent modal on external link click
-                    className="image-external-link"
-                  >
-                    <GatsbyImage image={image} alt={title} className="img" />
-                  </a>
-                  {/* Overlay div to catch image clicks and open modal */}
-                  <div
-                    className="image-modal-overlay"
-                    style={{ 
-                      position: 'absolute', 
-                      top: 0, 
-                      left: 0, 
-                      right: 0, 
-                      bottom: 0, 
-                      cursor: 'zoom-in', 
-                      zIndex: 10,
-                      background: 'rgba(0, 148, 224, 0)',
-                      transition: 'background 0.3s ease',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderRadius: 'var(--border-radius)'
-                    }}
-                    onClick={() => {
-                      openModal(allMedia, modalCopy, modalLinks);
-                    }}
-                    aria-label={`Open details for ${title}`}
-                    onMouseEnter={(e) => {
-                      e.target.style.background = 'rgba(0, 148, 224, 0.4)';
-                      e.target.querySelector('.modal-hover-content').style.opacity = '1';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.background = 'rgba(0, 148, 224, 0)';
-                      e.target.querySelector('.modal-hover-content').style.opacity = '0';
-                    }}
-                  >
-                    <div 
-                      className="modal-hover-content"
-                      style={{
-                        opacity: '0',
-                        transition: 'opacity 0.3s ease',
-                        textAlign: 'center',
-                        color: 'white',
-                        fontSize: '1.2rem',
-                        fontWeight: '600',
-                        pointerEvents: 'none'
+                      {tech.length && (
+                        <ul className="project-tech-list">
+                          {tech.map((tech, i) => (
+                            <li key={i}>{tech}</li>
+                          ))}
+                        </ul>
+                      )}
+                      
+                    </div>
+                  </div>
+
+                  <div className="project-image">
+                    <a
+                      href={external ? external : github ? github : '#'}
+                      target='_blank'
+                      rel="noreferrer"
+                      onClick={e => e.stopPropagation()} // Prevent modal on external link click
+                      className="image-external-link"
+                    >
+                      {/* Use video cover if available, otherwise use image */}
+                      {coverVideo ? (
+                        <video 
+                          src={coverVideo}
+                          className="img"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            display: 'block',
+                            borderRadius: 'var(--border-radius)'
+                          }}
+                          onError={(e) => {
+                            console.error('Video cover failed to load:', coverVideo);
+                          }}
+                        />
+                      ) : (
+                        <GatsbyImage image={image} alt={title} className="img" />
+                      )}
+                    </a>
+
+                    {/* Overlay div to catch image clicks and open modal */}
+                    <div
+                      className="image-modal-overlay"
+                      style={{ 
+                        position: 'absolute', 
+                        top: 0, 
+                        left: 0, 
+                        right: 0, 
+                        bottom: 0, 
+                        cursor: 'zoom-in', 
+                        zIndex: 10,
+                        background: 'rgba(0, 148, 224, 0)',
+                        transition: 'background 0.3s ease',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: 'var(--border-radius)'
+                      }}
+                      onClick={() => {
+
+                        openModal(allMedia, modalCopy, modalLinks);
+                      }}
+                      aria-label={`Open details for ${title}`}
+                      onMouseEnter={(e) => {
+                        e.target.style.background = 'rgba(0, 148, 224, 0.4)';
+                        e.target.querySelector('.modal-hover-content').style.opacity = '1';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.target.style.background = 'rgba(0, 148, 224, 0)';
+                        e.target.querySelector('.modal-hover-content').style.opacity = '0';
                       }}
                     >
-                      <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🔍</div>
-                      <div>View Details</div>
+                      <div 
+                        className="modal-hover-content"
+                        style={{
+                          opacity: '0',
+                          transition: 'opacity 0.3s ease',
+                          textAlign: 'center',
+                          color: 'white',
+                          fontSize: '1.2rem',
+                          fontWeight: '600',
+                          pointerEvents: 'none'
+                        }}
+                      >
+                        <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>🔍</div>
+                        <div>View Details</div>
+                      </div>
+                    </div>
+                    <div className="topLink desktop">
+                      <div className="triangle"></div>
+                      {external && !cta && (
+                      <div className="external">
+                        <Icon name="external" />
+                      </div>
+                    )}
                     </div>
                   </div>
-                  <div className="topLink desktop">
-                    <div className="triangle"></div>
-                    {external && !cta && (
-                    <div className="external">
-                      <Icon name="external" />
-                    </div>
-                  )}
-                  </div>
-                </div>
 
-              </StyledProject>
+                </StyledProject>
+              </React.Fragment>
             );
           })}
       </StyledProjectsGrid>
@@ -256,142 +269,351 @@ const Showcase = () => {
       {modalOpen && (
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <Slider
-              {...{
-                dots: false,
-                arrows: true,
-                infinite: true,
-                speed: 700,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                centerMode: true,
-                centerPadding: '0px',
-                nextArrow: <CustomArrow direction="next" />,
-                prevArrow: <CustomArrow direction="prev" />,
-              }}
-            >
-              
-              {modalData.images.map((img, idx) => (
-                // console.log('img', img),
-                <div key={idx}>
-                  <div style={{ maxWidth: '100%', margin: '0 auto', textAlign: 'center' }}>
-                    
-                    {/* Gatsby Image */}
-                    {img && img.childImageSharp ? (
-                      <GatsbyImage 
-                        image={img.childImageSharp.gatsbyImageData} 
-                        alt={`Screenshot ${idx + 1}`} 
-                        style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}
-                        imgStyle={{ objectFit: 'contain', width: '100%', height: 'auto', maxHeight: '500px' }}
-                      />
-                    ) : (() => {
-                      // Handle different types of media
-                      const mediaUrl = img?.publicURL || img;
+            {modalData.images.length > 1 ? (
+              <Slider
+                {...{
+                  dots: false,
+                  arrows: true,
+                  infinite: true,
+                  speed: 700,
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  centerMode: true,
+                  centerPadding: '0px',
+                  nextArrow: <CustomArrow direction="next" />,
+                  prevArrow: <CustomArrow direction="prev" />,
+                }}
+              >
+                
+                {modalData.images.map((img, idx) => (
+                  <div key={idx}>
+                    <div style={{ maxWidth: '100%', margin: '0 auto', textAlign: 'center' }}>
                       
-                      // Check if it's a YouTube URL
-                      if (typeof mediaUrl === 'string' && isYouTubeUrl(mediaUrl)) {
-                        const embedUrl = getYouTubeEmbedUrl(mediaUrl);
+                      {/* Gatsby Image */}
+                      {img && img.childImageSharp ? (
+                        <GatsbyImage 
+                          image={img.childImageSharp.gatsbyImageData} 
+                          alt={`Screenshot ${idx + 1}`} 
+                          style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}
+                          imgStyle={{ objectFit: 'contain', width: '100%', height: 'auto', maxHeight: '500px' }}
+                        />
+                      ) : (() => {
+                        // Handle different types of media
+                        const mediaUrl = img?.publicURL || img;
+                        
+                        // Check if it's a YouTube URL
+                        // if (typeof mediaUrl === 'string' && isYouTubeUrl(mediaUrl)) {
+                        //   const embedUrl = getYouTubeEmbedUrl(mediaUrl);
+                        //   return (
+                        //     <iframe
+                        //       src={embedUrl}
+                        //       title={`YouTube video ${idx + 1}`}
+                        //       style={{
+                        //         width: '100%',
+                        //         maxWidth: '800px',
+                        //         height: '450px',
+                        //         borderRadius: '8px',
+                        //         border: 'none',
+                        //         display: 'block',
+                        //         margin: '0 auto',
+                        //         pointerEvents: 'none'
+                        //       }}
+                        //       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        //       allowFullScreen
+                        //       frameborder="0" 
+                        //     />
+                        //   );
+                        // }
+                        
+                        // Check if it's a video file URL
+                        if (typeof mediaUrl === 'string' && mediaUrl.match(/\.(mp4|webm|ogg|mov)$/i)) {
+                          return (
+                            <video 
+                              src={mediaUrl} 
+                              alt={`Demo video ${idx + 1}`}
+                              style={{ 
+                                width: '100%', 
+                                maxWidth: '800px', 
+                                maxHeight: '500px', 
+                                borderRadius: '8px', 
+                                display: 'block', 
+                                margin: '0 auto' 
+                              }}
+                              autoPlay
+                              muted
+                              loop
+                              playsInline
+                              controls={false}
+                              onError={(e) => {
+                                console.error('Video failed to load:', mediaUrl);
+                                e.target.style.display = 'none';
+                              }}
+                            />
+                          );
+                        }
+
+                        // Regular image URL
                         return (
-                          <iframe
-                            src={embedUrl}
-                            title={`YouTube video ${idx + 1}`}
-                            style={{
-                              width: '100%',
-                              maxWidth: '800px',
-                              height: '450px',
-                              borderRadius: '8px',
-                              border: 'none',
-                              display: 'block',
-                              margin: '0 auto',
-                              pointerEvents: 'none'
-                            }}
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            frameborder="0" 
-                          />
-                        );
-                      }
-                      
-                      // Check if it's a video file URL
-                      if (typeof mediaUrl === 'string' && mediaUrl.match(/\.(mp4|webm|ogg|mov)$/i)) {
-                        // console.log('mediaUrl', mediaUrl);
-                        return (
-                          <video 
+                          <img 
                             src={mediaUrl} 
-                            alt={`Demo video ${idx + 1}`}
+                            alt={`Screenshot ${idx + 1}`} 
                             style={{ 
                               width: '100%', 
                               maxWidth: '800px', 
                               maxHeight: '500px', 
+                              objectFit: 'contain', 
                               borderRadius: '8px', 
                               display: 'block', 
                               margin: '0 auto' 
-                            }}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                            controls={false}
+                            }} 
                             onError={(e) => {
-                              console.error('Video failed to load:', mediaUrl);
+                              console.error('Image failed to load:', mediaUrl);
                               e.target.style.display = 'none';
                             }}
                           />
                         );
-                      }
-                      // console.log('mediaUrl', mediaUrl);
-                      // Regular image URL
-                      return (
-                        <img 
+
+                      })()}
+                      
+                      <div className="modal-copy" style={{ margin: '1rem auto 0.5rem auto', color: '#fff', fontSize: '1.1rem', maxWidth: '800px', textAlign: 'center', lineHeight: '1.4' }}>
+                        {modalData.modalCopy[idx]}
+                      </div>
+                      
+                      {modalData.modalLinks[idx] && modalData.modalLinks[idx] !== 'null' && (
+                        <div className="modal-links" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', maxWidth: '800px', margin: '0 auto', paddingTop: '1rem' }}>
+                          {(() => {
+                            try {
+                              const links = JSON.parse(modalData.modalLinks[idx]);
+                              return links.map((link, linkIdx) => (
+                                <a 
+                                  key={linkIdx} 
+                                  href={link.url} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer" 
+                                  className="modal-link-btn"
+                                >
+                                  {link.label}
+                                </a>
+                              ));
+                            } catch (e) {
+                              console.error('Error parsing modal links:', e);
+                              return null;
+                            }
+                          })()}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+
+              </Slider>
+            ) : (
+              // Single item - render without Slider
+              <div style={{ maxWidth: '100%', margin: '0 auto', textAlign: 'center' }}>
+                {(() => {
+                  const img = modalData.images[0];
+                  
+                  // Gatsby Image
+                  if (img && img.childImageSharp) {
+                    return (
+                      <>
+                        <GatsbyImage 
+                          image={img.childImageSharp.gatsbyImageData} 
+                          alt="Screenshot" 
+                          style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}
+                          imgStyle={{ objectFit: 'contain', width: '100%', height: 'auto', maxHeight: '500px' }}
+                        />
+                        <div className="modal-copy" style={{ margin: '1rem auto 0.5rem auto', color: '#fff', fontSize: '1.1rem', maxWidth: '800px', textAlign: 'center', lineHeight: '1.4' }}>
+                          {modalData.modalCopy[0]}
+                        </div>
+                        {modalData.modalLinks[0] && modalData.modalLinks[0] !== 'null' && (
+                          <div className="modal-links" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', maxWidth: '800px', margin: '0 auto', paddingTop: '1rem' }}>
+                            {(() => {
+                              try {
+                                const links = JSON.parse(modalData.modalLinks[0]);
+                                return links.map((link, linkIdx) => (
+                                  <a 
+                                    key={linkIdx} 
+                                    href={link.url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="modal-link-btn"
+                                  >
+                                    {link.label}
+                                  </a>
+                                ));
+                              } catch (e) {
+                                console.error('Error parsing modal links:', e);
+                                return null;
+                              }
+                            })()}
+                          </div>
+                        )}
+                      </>
+                    );
+                  }
+                  
+                  // Handle different types of media
+                  const mediaUrl = img?.publicURL || img;
+                  
+                  // Check if it's a YouTube URL
+                  // if (typeof mediaUrl === 'string' && isYouTubeUrl(mediaUrl)) {
+                  //   const embedUrl = getYouTubeEmbedUrl(mediaUrl);
+                  //   return (
+                  //     <>
+                  //       <iframe
+                  //         src={embedUrl}
+                  //         title="YouTube video"
+                  //         style={{
+                  //           width: '100%',
+                  //           maxWidth: '800px',
+                  //           height: '450px',
+                  //           borderRadius: '8px',
+                  //           border: 'none',
+                  //           display: 'block',
+                  //           margin: '0 auto',
+                  //           pointerEvents: 'none'
+                  //         }}
+                  //         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  //         allowFullScreen
+                  //         frameborder="0" 
+                  //       />
+                  //       <div className="modal-copy" style={{ margin: '1rem auto 0.5rem auto', color: '#fff', fontSize: '1.1rem', maxWidth: '800px', textAlign: 'center', lineHeight: '1.4' }}>
+                  //         {modalData.modalCopy[0]}
+                  //       </div>
+                  //       {modalData.modalLinks[0] && modalData.modalLinks[0] !== 'null' && (
+                  //         <div className="modal-links" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', maxWidth: '800px', margin: '0 auto', paddingTop: '1rem' }}>
+                  //           {(() => {
+                  //             try {
+                  //               const links = JSON.parse(modalData.modalLinks[0]);
+                  //               return links.map((link, linkIdx) => (
+                  //                 <a 
+                  //                   key={linkIdx} 
+                  //                   href={link.url} 
+                  //                   target="_blank" 
+                  //                   rel="noopener noreferrer" 
+                  //                   className="modal-link-btn"
+                  //                 >
+                  //                   {link.label}
+                  //                 </a>
+                  //               ));
+                  //             } catch (e) {
+                  //               console.error('Error parsing modal links:', e);
+                  //               return null;
+                  //             }
+                  //           })()}
+                  //         </div>
+                  //       )}
+                  //     </>
+                  //   );
+                  // }
+                  
+                  // Check if it's a video file URL
+                  if (typeof mediaUrl === 'string' && mediaUrl.match(/\.(mp4|webm|ogg|mov)$/i)) {
+                    return (
+                      <>
+                        <video 
                           src={mediaUrl} 
-                          alt={`Screenshot ${idx + 1}`} 
+                          alt="Demo video"
                           style={{ 
                             width: '100%', 
                             maxWidth: '800px', 
                             maxHeight: '500px', 
-                            objectFit: 'contain', 
                             borderRadius: '8px', 
                             display: 'block', 
                             margin: '0 auto' 
-                          }} 
+                          }}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          controls={false}
                           onError={(e) => {
-                            console.error('Image failed to load:', mediaUrl);
+                            console.error('Video failed to load:', mediaUrl);
                             e.target.style.display = 'none';
                           }}
                         />
-                      );
-
-                    })()}
-                    
-                    <div className="modal-copy" style={{ margin: '1rem auto 0.5rem auto', color: '#fff', fontSize: '1.1rem', maxWidth: '800px', textAlign: 'center', lineHeight: '1.4' }}>
-                      {modalData.modalCopy[idx]}
-                    </div>
-                    
-                    <div className="modal-links" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', maxWidth: '800px', margin: '0 auto', paddingTop: '1rem' }}>
-                      {modalData.modalLinks[idx] && (() => {
-                        try {
-                          const links = JSON.parse(modalData.modalLinks[idx]);
-                          return links.map((link, linkIdx) => (
-                            <a 
-                              key={linkIdx} 
-                              href={link.url} 
-                              target="_blank" 
-                              rel="noopener noreferrer" 
-                              className="modal-link-btn"
-                            >
-                              {link.label}
-                            </a>
-                          ));
-                        } catch (e) {
-                          console.error('Error parsing modal links:', e);
-                          return null;
-                        }
-                      })()}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </Slider>
+                        <div className="modal-copy" style={{ margin: '1rem auto 0.5rem auto', color: '#fff', fontSize: '1.1rem', maxWidth: '800px', textAlign: 'center', lineHeight: '1.4' }}>
+                          {modalData.modalCopy[0]}
+                        </div>
+                        {modalData.modalLinks[0] && modalData.modalLinks[0] !== 'null' && (
+                          <div className="modal-links" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', maxWidth: '800px', margin: '0 auto', paddingTop: '1rem' }}>
+                            {(() => {
+                              try {
+                                const links = JSON.parse(modalData.modalLinks[0]);
+                                return links.map((link, linkIdx) => (
+                                  <a 
+                                    key={linkIdx} 
+                                    href={link.url} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className="modal-link-btn"
+                                  >
+                                    {link.label}
+                                  </a>
+                                ));
+                              } catch (e) {
+                                console.error('Error parsing modal links:', e);
+                                return null;
+                              }
+                            })()}
+                          </div>
+                        )}
+                      </>
+                    );
+                  }
+                  
+                  // Regular image URL
+                  return (
+                    <>
+                      <img 
+                        src={mediaUrl} 
+                        alt="Screenshot" 
+                        style={{ 
+                          width: '100%', 
+                          maxWidth: '800px', 
+                          maxHeight: '500px', 
+                          objectFit: 'contain', 
+                          borderRadius: '8px', 
+                          display: 'block', 
+                          margin: '0 auto' 
+                        }} 
+                        onError={(e) => {
+                          console.error('Image failed to load:', mediaUrl);
+                          e.target.style.display = 'none';
+                        }}
+                      />
+                      <div className="modal-copy" style={{ margin: '1rem auto 0.5rem auto', color: '#fff', fontSize: '1.1rem', maxWidth: '800px', textAlign: 'center', lineHeight: '1.4' }}>
+                        {modalData.modalCopy[0]}
+                      </div>
+                      {modalData.modalLinks[0] && modalData.modalLinks[0] !== 'null' && (
+                        <div className="modal-links" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', maxWidth: '800px', margin: '0 auto', paddingTop: '1rem' }}>
+                          {(() => {
+                            try {
+                              const links = JSON.parse(modalData.modalLinks[0]);
+                              return links.map((link, linkIdx) => (
+                                <a 
+                                  key={linkIdx} 
+                                  href={link.url} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer" 
+                                  className="modal-link-btn"
+                                >
+                                  {link.label}
+                                </a>
+                              ));
+                            } catch (e) {
+                              console.error('Error parsing modal links:', e);
+                              return null;
+                            }
+                          })()}
+                        </div>
+                      )}
+                    </>
+                  );
+                })()}
+              </div>
+            )}
           </div>
         </div>
       )}

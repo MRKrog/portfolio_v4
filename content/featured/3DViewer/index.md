@@ -1,7 +1,8 @@
 ---
 date: '2'
 title: '3D Interactive Viewer'
-cover: './Viewer1.jpg'
+slug: showcase-3d-interactive-viewer
+coverVideo: 'https://portfolio-assets-mk.s3.amazonaws.com/videos/HeadphonesVariant_compressed.mp4'
 github: ''
 external: 'https://viewer.levar.io/?ecomm=shp_32935870599_6631209074823_39594167074951'
 tech:
@@ -9,18 +10,18 @@ tech:
   - three.js
   - R3F / Drei
   - Custom Art Pipeline
-images:
-  - ./Viewer1.jpg
-  - ./Viewer2.jpg
-  - ./Viewer3.jpg
+videos:
+  - https://portfolio-assets-mk.s3.amazonaws.com/videos/VariantChangeIntro_compressed.mp4
+  - https://portfolio-assets-mk.s3.amazonaws.com/videos/VariantChangeFinal_compressed.mp4
+  - https://portfolio-assets-mk.s3.amazonaws.com/videos/variantChangeNew_final.mp4
 modalCopy:
-  - "Experience products in stunning 3D detail with our interactive viewer. Rotate, zoom, and explore every angle of products before making a purchase decision."
-  - "Switch between different product models and variations seamlessly. Compare colors, materials, and features side-by-side in real-time 3D visualization."
-  - "Launch AR mode with a simple modal popup to place products directly in your space. See how items fit in your environment before purchasing using augmented reality."
+  - "Welcome to the 3D Interactive Viewer! See how this powerful tool transforms product exploration with immersive 3D visualization, real-time interactions, and seamless variant switching."
+  - "Watch advanced variant switching in action! Experience smooth transitions between product configurations, colors, and materials with instant updates and fluid animations."
+  - "See real-time product customization! Switch between different models, colors, and features seamlessly while maintaining perfect 3D quality and performance."
 modalLinks:
-  - '[{"label": "Try Live Demo", "url": "https://viewer.levar.io/?ecomm=shp_32935870599_6631209074823_39594167074951"}]'
-  - '[{"label": "Try Live Demo", "url": "https://viewer.levar.io/?ecomm=shp_32935870599_6640744235143_39634715279495"}]'
-  - '[{"label": "Try Live Demo", "url": "https://viewer.levar.io/?ecomm=shp_32935870599_6631209074823_39594167107719"}]'
+  - '[{"label": "Try Headphones Demo", "url": "https://viewer.levar.io/?ecomm=shp_32935870599_6631209074823_39594167074951"}]'
+  - '[{"label": "Try Bike Demo", "url": "https://viewer.levar.io/?ecomm=shp_58973749412_7189749924004_41703004831908"}]'
+  - '[{"label": "Try Glasses Demo", "url": "https://viewer.levar.io/?ecomm=shp_27596521506_7662504116411_43410585682107"}]'
 ---
 
-A white-labeled interactive 3D viewer powering the core levAR experience. Supports 3D model switching, detailed annotations and animations. Integrates easily with eCommerce platforms to provide customers with an immersive, real-time product interaction.
+A white-labeled interactive 3D viewer powering the core LEVAR experience. Supports 3D model switching, detailed annotations and animations. Integrates easily with eCommerce platforms to provide customers with an immersive, real-time product interaction.

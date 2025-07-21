@@ -77,6 +77,8 @@ exports.createSchemaCustomization = ({ actions }) => {
       images: [File] @fileByRelativePath
       videos: [String]
       videoLinks: [String]
+      cover: File @fileByRelativePath
+      coverVideo: String
     }
   `);
 };
