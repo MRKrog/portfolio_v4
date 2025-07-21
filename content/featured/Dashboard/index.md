@@ -11,14 +11,11 @@ tech:
   - Material UI
   - AWS
   - Amplify
-images:
-  - ./levarDashboard.jpg
-  - ./levarDashboard.jpg
+videos:
+  - 'https://portfolio-assets-mk.s3.amazonaws.com/videos/DashboardUpload_compressed.mp4'
 modalCopy:
-  - "Dashboard upload interface overview"
-  - "levAR platform demo showcasing 3D and AR capabilities"
+  - "Upload 3D models directly through the dashboard and instantly display them on product detail pages. Easily manage your assets and bring interactive 3D experiences to your storefront."
 modalLinks:
-  - '[{"label": "Try Live Demo", "url": "https://app.levar.io/"}]'
   - '[{"label": "Try Live Demo", "url": "https://app.levar.io/"}]'
 ---
 
