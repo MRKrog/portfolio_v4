@@ -456,58 +456,6 @@ const Showcase = () => {
                   // Handle different types of media
                   const mediaUrl = img?.publicURL || img;
                   
-                  // Check if it's a YouTube URL
-                  // if (typeof mediaUrl === 'string' && isYouTubeUrl(mediaUrl)) {
-                  //   const embedUrl = getYouTubeEmbedUrl(mediaUrl);
-                  //   return (
-                  //     <>
-                  //       <iframe
-                  //         src={embedUrl}
-                  //         title="YouTube video"
-                  //         style={{
-                  //           width: '100%',
-                  //           maxWidth: '800px',
-                  //           height: '450px',
-                  //           borderRadius: '8px',
-                  //           border: 'none',
-                  //           display: 'block',
-                  //           margin: '0 auto',
-                  //           pointerEvents: 'none'
-                  //         }}
-                  //         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  //         allowFullScreen
-                  //         frameborder="0" 
-                  //       />
-                  //       <div className="modal-copy" style={{ margin: '1rem auto 0.5rem auto', color: '#fff', fontSize: '1.1rem', maxWidth: '800px', textAlign: 'center', lineHeight: '1.4' }}>
-                  //         {modalData.modalCopy[0]}
-                  //       </div>
-                  //       {modalData.modalLinks[0] && modalData.modalLinks[0] !== 'null' && (
-                  //         <div className="modal-links" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center', maxWidth: '800px', margin: '0 auto', paddingTop: '1rem' }}>
-                  //           {(() => {
-                  //             try {
-                  //               const links = JSON.parse(modalData.modalLinks[0]);
-                  //               return links.map((link, linkIdx) => (
-                  //                 <a 
-                  //                   key={linkIdx} 
-                  //                   href={link.url} 
-                  //                   target="_blank" 
-                  //                   rel="noopener noreferrer" 
-                  //                   className="modal-link-btn"
-                  //                 >
-                  //                   {link.label}
-                  //                 </a>
-                  //               ));
-                  //             } catch (e) {
-                  //               console.error('Error parsing modal links:', e);
-                  //               return null;
-                  //             }
-                  //           })()}
-                  //         </div>
-                  //       )}
-                  //     </>
-                  //   );
-                  // }
-                  
                   // Check if it's a video file URL
                   if (typeof mediaUrl === 'string' && mediaUrl.match(/\.(mp4|webm|ogg|mov)$/i)) {
                     return (
