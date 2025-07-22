@@ -5,9 +5,10 @@ export const StyledProjectsSection = styled.section`
   margin: 0 auto 100px;
   text-align: center;
   position: relative;
+  padding: 0;
 
   h2 {
-    top: 6rem;
+    top: -4rem;
     z-index: -1;
     font-size: clamp(2rem, 24vw, 12rem);
     letter-spacing: 0px;

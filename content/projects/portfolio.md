@@ -8,7 +8,7 @@ tech:
   - React
   - Styled Components
   - GSAP
-showInProjects: true
+showInProjects: false
 ---
 
 A personal site built with Gatsby to showcase my work and explore modern web tools like React and GraphQL.
