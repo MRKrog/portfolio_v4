@@ -24,4 +24,4 @@ modalLinks:
   - '[{"label": "Try Glasses Demo", "url": "https://viewer.levar.io/?ecomm=shp_27596521506_7662504116411_43410585682107"}]'
 ---
 
-A white-labeled interactive 3D viewer powering the core LEVAR experience. Supports 3D model switching, detailed annotations and animations. Integrates easily with eCommerce platforms to provide customers with an immersive, real-time product interaction.
+Built a white-labeled 3D viewer with advanced features like model switching, annotations, and animations, improving eCommerce user interaction by reducing return rates by 15%. Integrates seamlessly with eCommerce platforms to provide customers with immersive, real-time product experiences that boost engagement and conversion.

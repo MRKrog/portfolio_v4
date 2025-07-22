@@ -62,10 +62,28 @@ export const StyledHeroSection = styled.section`
     gap: 15px;
     margin-top: 20px;
     justify-content: center;
+    flex-wrap: wrap;
 
     .hero-btn {
       ${({ theme }) => theme.mixins.smallButton};
       font-size: var(--fz-xs);
+      transition: all 0.3s ease;
+      
+      &.primary {
+        background: var(--m-blue);
+        color: white;
+        border-color: var(--m-blue);
+        
+        &:hover {
+          background: transparent;
+          color: var(--m-blue);
+        }
+      }
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 148, 224, 0.3);
+      }
     }
   }
 `;

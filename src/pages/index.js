@@ -5,6 +5,7 @@ import {
   Layout, 
   Hero, 
   About, 
+  Skills, 
   Jobs, 
   Showcase, 
   Projects, 
@@ -17,7 +18,8 @@ const StyledMainContainer = styled.main`
 `;
 
 const IndexPage = ({ location }) => {
-  const isDesktop = typeof window !== 'undefined' && window.innerWidth > 768;
+  // eslint-disable-next-line no-undef
+  const isDesktop = typeof window !== 'undefined' && window && window.innerWidth > 768;
 
   return (
     <Layout location={location}>
@@ -28,6 +30,7 @@ const IndexPage = ({ location }) => {
         <Projects />
         <Jobs />
         <Contact />   
+        <Skills />
         {isDesktop && <CursorFollow />}
       </StyledMainContainer>
     </Layout>
