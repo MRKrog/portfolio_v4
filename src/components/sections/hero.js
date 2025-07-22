@@ -78,9 +78,9 @@ const Hero = () => {
       Welcome! I&#39;m a <strong>developer</strong> passionate about building interactive web experiences 
       <br/>from dynamic single page <strong>apps</strong> to robust <strong>web platforms</strong>.<br/>
       <div className="hero-cta-buttons">
-        <a className="hero-btn" href="/#showcase">See my work</a>
-        <a className="hero-btn" href="/#about">Get to know me</a>
-        <a className="hero-btn" href="/#contact">Let's connect</a>
+        <a className="hero-btn primary" href="/#showcase">View Projects</a>
+        <a className="hero-btn" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
+        <a className="hero-btn" href="/#contact">Let's Connect</a>
       </div>
     </p>
   );

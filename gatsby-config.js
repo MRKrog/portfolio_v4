@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  */
 
+/* eslint-disable */
+
 const config = require('./src/config');
 
 /**
@@ -13,9 +15,9 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Michael Krog',
+    title: 'Michael Krog | AR eCommerce Developer Portfolio',
     description:
-      'Michael Krog is a software engineer who specializes in building (and occasionally designing) exceptional digital experiences.',
+      'Full-stack developer specializing in AR/3D eCommerce applications. Building immersive shopping experiences with React, Three.js, and AWS. Led 40% engagement growth at levAR.',
     siteUrl: 'https://mkrog.com',
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@michaelkrog',
