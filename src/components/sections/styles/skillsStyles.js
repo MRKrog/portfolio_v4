@@ -3,12 +3,13 @@ import styled from 'styled-components';
 export const StyledSkillsSection = styled.section`
   max-width: 900px;
   margin: 0 auto 100px;
+  padding: 50px 0px;
 
   h2 {
     padding-top: 0px;
     z-index: -1;
     left: 0;
-    top: 7rem;
+    top: -5rem;
     font-size: clamp(2rem, 28vw, 10rem);
     letter-spacing: -5px;
   }
@@ -16,7 +17,7 @@ export const StyledSkillsSection = styled.section`
   .inner {
     display: flex;
     flex-direction: column;
-    padding-top: 150px;
+    padding-top: 0;
 
     @media (max-width: 600px) {
       padding-top: 110px;
