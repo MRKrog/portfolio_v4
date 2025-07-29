@@ -15,7 +15,7 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Michael Krog | AR eCommerce Developer Portfolio',
+    title: 'Michael Krog | Portfolio',
     description:
       'Full-stack developer specializing in AR/3D eCommerce applications. Building immersive shopping experiences with React, Three.js, and AWS. Led 40% engagement growth at levAR.',
     siteUrl: 'https://mkrog.com',
