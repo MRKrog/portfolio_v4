@@ -17,9 +17,9 @@ export const StyledAboutSection = styled.section`
     z-index: -1;
     top: 2rem;
     right: 0;
-    font-size: clamp(2rem, 30vw, 14rem);
+    width: 100%;
+    font-size: clamp(2rem, 22vw, 12rem);
     letter-spacing: -5px;
-    opacity: 0.03;
   }
 
   .inner {
@@ -59,18 +59,17 @@ export const StyledAboutSection = styled.section`
   }
 
   .about-title {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 700;
     line-height: 1.1;
     margin: 0 0 15px 0;
     letter-spacing: -0.02em;
     position: relative;
-    
-    br {
-      display: none;
-      @media (max-width: 768px) {
-        display: block;
-      }
+    white-space: nowrap;
+
+    @media (max-width: 480px) {
+      font-size: clamp(1.65rem, 7vw, 2.25rem);
+      white-space: normal;
     }
   }
 
@@ -78,11 +77,17 @@ export const StyledAboutSection = styled.section`
     margin: 0;
     color: var(--m-blue);
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
     position: relative;
+    white-space: nowrap;
+
+    @media (max-width: 480px) {
+      white-space: normal;
+      line-height: 1.5;
+    }
   }
 
   .about-copy {
@@ -100,28 +105,6 @@ export const StyledAboutSection = styled.section`
     }
   }
 
-  .about-highlight {
-    background: linear-gradient(120deg, rgba(0, 136, 204, 0.1) 0%, rgba(0, 209, 255, 0.1) 100%);
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 4px solid var(--m-blue);
-    margin: 25px 0;
-    
-    .highlight-title {
-      font-weight: 600;
-      color: var(--m-blue);
-      margin: 0 0 10px 0;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    
-    .highlight-text {
-      margin: 0;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-  }
 `;
 
 export const StyledPic = styled.div`

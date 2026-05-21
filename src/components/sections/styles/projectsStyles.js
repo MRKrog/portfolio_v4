@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledProjectsSection = styled.section`
   max-width: 900px;
-  margin: 0 auto 100px;
+  margin: 0 auto 220px;
   text-align: center;
   position: relative;
   padding: 0;
@@ -17,7 +17,7 @@ export const StyledProjectsSection = styled.section`
   }
 
   @media (max-width: 768px) {
-    margin: 0 auto 50px;
+    margin: 0 auto 140px;
   }
 
   .archive-link {

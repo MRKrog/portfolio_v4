@@ -1,16 +1,19 @@
 {
   "name": "michael-krog",
   "private": true,
-  "description": "Personal Website",
+  "description": "Personal Portfolio",
   "version": "0.1.0",
   "author": "Michael Krog",
+  "engines": {
+    "node": "18.x"
+  },
+  "packageManager": "yarn@1.22.22",
   "dependencies": {
     "@iconify/react": "^5.0.2",
     "ajv": "^8.17.1",
     "animejs": "^3.2.2",
     "babel-plugin-styled-components": "^2.1.4",
     "gatsby": "^4.25.9",
-    "gatsby-plugin-google-analytics": "^4.25.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-google-gtag": "^4.25.0",
     "gatsby-plugin-image": "^2.25.0",

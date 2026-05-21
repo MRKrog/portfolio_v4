@@ -11,6 +11,104 @@ export const StyledShowcaseSection = styled.section`
     letter-spacing: -3px;
     margin: 0;
   }
+
+  .image-modal-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-in;
+    background: rgba(0, 148, 224, 0);
+    border: 0;
+    border-radius: var(--border-radius);
+    transition: background 0.3s ease;
+    padding: 0;
+
+    .modal-hover-content {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      text-align: center;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .modal-hover-icon {
+      font-size: 2rem;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: rgba(0, 148, 224, 0.4);
+      .modal-hover-content {
+        opacity: 1;
+      }
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    border: 0;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    transition: background 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  }
+
+  .modal-slide {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .modal-media {
+    width: 100%;
+    max-width: 800px;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .modal-copy {
+    margin: 1rem auto 0.5rem;
+    color: #fff;
+    font-size: 1.1rem;
+    max-width: 800px;
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .modal-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 1rem;
+  }
 `;
 
 export const StyledProjectsGrid = styled.ul`

@@ -64,9 +64,5 @@ export const StyledSkillsSection = styled.section`
     font-size: 0.8rem;
     font-family: var(--font-mono);
     padding: 2px 0;
-    
-    &:hover {
-      color: var(--m-blue);
-    }
   }
-`; 
+`;

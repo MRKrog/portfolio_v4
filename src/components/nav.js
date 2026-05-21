@@ -1,21 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled, { css } from 'styled-components';
-// import { navLinks } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
 import { MLogo } from '@components/icons';
-import { Icon as IconifyIcon } from "@iconify/react";
+import { Icon as IconifyIcon } from '@iconify/react';
 
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 50;
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
@@ -207,19 +206,6 @@ const Nav = ({ isHome }) => {
           <MLogo />
         </div>
       </Link>
-      {/* {!isHome ? (
-        <a href="/" aria-label="home">
-          <div className="logo-container">
-            <MLogo />
-          </div>
-        </a>
-      ) : (
-        <Link to="/" aria-label="home">
-          <div className="logo-container">
-            <MLogo />
-          </div>
-        </Link>
-      )} */}
     </div>
   );
 
@@ -229,29 +215,30 @@ const Nav = ({ isHome }) => {
     </a>
   );
 
-  const navLinks = [
-    {
-      name: 'about me',
-      url: '/#about',
-      nodeRef: React.createRef(null),
-    },
-    {
-      name: 'showcase',
-      url: '/#showcase',
-      nodeRef: React.createRef(null),
-    },
-    {
-      name: 'day job',
-      url: '/#jobs',
-      nodeRef: React.createRef(null),
-    },
-    {
-      name: 'say hi',
-      icon: <IconifyIcon icon="twemoji:waving-hand" style={{ width: 18, height: 18, marginLeft: 10, verticalAlign: 'text-bottom' }} />,
-      url: '/#contact',
-      nodeRef: React.createRef(null),
-    },
-  ];
+  const navLinks = useMemo(
+    () => [
+      { name: 'about', url: '/#about' },
+      { name: 'skills', url: '/#skills' },
+      { name: 'experience', url: '/#jobs' },
+      { name: 'showcase', url: '/#showcase' },
+      {
+        name: 'say hi',
+        icon: (
+          <IconifyIcon
+            icon="twemoji:waving-hand"
+            style={{ width: 18, height: 18, marginLeft: 10, verticalAlign: 'text-bottom' }}
+          />
+        ),
+        url: '/#contact',
+      },
+    ],
+    [],
+  );
+
+  const navLinkRefs = useRef([]);
+  navLinks.forEach((_, i) => {
+    navLinkRefs.current[i] = navLinkRefs.current[i] || React.createRef();
+  });
   
 
   return (
@@ -293,17 +280,15 @@ const Nav = ({ isHome }) => {
               <ol>
                 <TransitionGroup component={null}>
                   {isMounted &&
-                    navLinks &&
-                    navLinks.map(({ url, name, nodeRef, icon }, i) => (
-                      <CSSTransition 
+                    navLinks.map(({ url, name, icon }, i) => (
+                      <CSSTransition
                         key={i}
-                        nodeRef={nodeRef} 
-                        classNames={fadeDownClass} 
+                        nodeRef={navLinkRefs.current[i]}
+                        classNames={fadeDownClass}
                         timeout={timeout}
                       >
-                        <li 
-                          // key={i} 
-                          ref={nodeRef}
+                        <li
+                          ref={navLinkRefs.current[i]}
                           style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}
                         >
                           <Link to={url}>{name}{icon}</Link>

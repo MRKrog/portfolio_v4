@@ -21,45 +21,32 @@ const About = () => {
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
-      
-      <h2 className="m-section-title">intro</h2>
+      <h2 className="m-section-title">about</h2>
 
       <div className="inner">
-
         <StyledText>
           <div className="about-content">
             <div className="about-header">
               <h3 className="about-title">
-                A Brief <br/> Who&#39;s <span className='name-gradient'>Mike!</span>
+                A Brief Who&#39;s <span className="name-gradient">Mike!</span>
               </h3>
-      
               <h5 className="about-subtitle">Full Stack Developer | AR/3D Specialist | eCommerce</h5>
             </div>
 
             <p className="about-copy">
-              Experienced full-stack developer specializing in AWS, React, and Node.js, with a focus on building seamless and scalable AR-enhanced eCommerce applications. Passionate about optimizing system architectures for future growth while incorporating sustainable and creative problem-solving.
-            </p>
-
-            {/* <div className="about-highlight">
-              <div className="highlight-title">Key Achievement</div>
-              <div className="highlight-text">
-                Led 40% boost in customer engagement and traffic through strategic 3D/AR technology integration at levAR.
-              </div>
-            </div> */}
-
-            <p className="about-copy">
-              Originally from the Chicago area, I&#39;ve always been the type to take things apart just to see how they tick. My fascination with the web started early, inspecting and rebuilding sites for fun. That drive to understand and create led me to DePaul University, and now fuels my work as a web developer and designer.
-            </p>
-
-            {/* <p className="about-copy">
-              At the moment, I'm with <a href="https://levar.io/" target="_blank" rel="noreferrer">levAR</a>, a startup I&#39;ve been helping build since day one. 
-              We&#39;re revolutionizing eCommerce with <b>3D</b> and <b>Augmented Reality</b>, making online shopping as immersive as in-store experiences.
+              I&#39;m a full-stack developer specializing in <strong>AWS</strong>, <strong>React</strong>, and <strong>Node.js</strong>,
+              with a focus on AR-enhanced eCommerce. At{' '}
+              <a href="https://levar.io/" target="_blank" rel="noreferrer">levAR</a> I&#39;ve been
+              building the platform since day one bringing <strong>3D</strong> and{' '}
+              <strong>augmented reality</strong> to online stores so shopping feels closer to the
+              in-store experience.
             </p>
 
             <p className="about-copy">
-              When I&#39;m away from the keyboard, I&#39;m probably dreaming about skiing, planning my next trip, or stopping to pet every dog I see.
-            </p> */}
-
+              Originally from the Chicago area, I&#39;ve always been the type to take things apart
+              just to see how they tick. That curiosity led me through DePaul University and now
+              fuels my work designing and building for the web.
+            </p>
           </div>
         </StyledText>
 
@@ -67,19 +54,16 @@ const About = () => {
           <div className="wrapper">
             <StaticImage
               className="img"
-              src={'../../images/portfolio_me.jpg'}
-              // src={'../../images/me.jpg'}
+              src="../../images/portfolio_me.jpg"
               width={400}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
-              alt="Headshot"
+              alt="Headshot of Michael Krog"
             />
           </div>
-          <div className="image-decoration bottom-right"></div>
+          <div className="image-decoration bottom-right" />
         </StyledPic>
-
       </div>
-
     </StyledAboutSection>
   );
 };

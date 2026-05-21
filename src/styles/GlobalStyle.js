@@ -31,26 +31,12 @@ const GlobalStyle = createGlobalStyle`
     color: #1d1d1f;
   }
 
-  /* Provide basic, default focus styles.*/˛
-  :focus {
-    outline: 2px dashed var(--m-blue);
-    outline-offset: 3px;
-  }
-
-  /*
-    Remove default focus styles for mouse users ONLY if
-    :focus-visible is supported on this platform.
-  */
+  /* Remove default focus styles for mouse users; restore for keyboard. */
   :focus:not(:focus-visible) {
     outline: none;
-    outline-offset: 0px;
+    outline-offset: 0;
   }
 
-  /*
-    Optionally: If :focus-visible is supported on this
-    platform, provide enhanced focus styles for keyboard
-    focus.
-  */
   :focus-visible {
     outline: 2px dashed var(--m-blue);
     outline-offset: 3px;

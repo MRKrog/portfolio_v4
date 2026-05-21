@@ -45,6 +45,8 @@ const Head = ({ title = null, description = null, image = null }) => {
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 
+      <link rel="canonical" href={seo.url} />
+
       <meta property="og:title" content={seo.title} />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
@@ -58,6 +60,22 @@ const Head = ({ title = null, description = null, image = null }) => {
       <meta name="twitter:image" content={seo.image} />
 
       <meta name="google-site-verification" content="DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk" />
+
+      <script type="application/ld+json">{`
+        {
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Michael Krog",
+          "url": "${siteUrl}",
+          "image": "${seo.image}",
+          "jobTitle": "Full-Stack Developer",
+          "description": "${defaultDescription}",
+          "sameAs": [
+            "https://github.com/MRKrog",
+            "https://www.linkedin.com/in/michaelkrog/"
+          ]
+        }
+      `}</script>
     </Helmet>
   );
 };
