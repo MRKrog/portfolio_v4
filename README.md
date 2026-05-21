@@ -10,36 +10,46 @@ A personal portfolio website built with Gatsby.
    cd portfolio_v4
    ```
 
-2. **Install Node.js 18 (LTS) and use it:**
-   This project requires Node.js **v18.x** for best compatibility.
-   - If you use [nvm](https://github.com/nvm-sh/nvm):
+2. **Install Node.js 18 (LTS):**
+   This project requires Node.js **v18.x**.
+   - With [nvm](https://github.com/nvm-sh/nvm):
      ```bash
      nvm install 18
      nvm use 18
      ```
    - Or install Node 18 from [nodejs.org](https://nodejs.org/)
 
-3. **Install dependencies:**
+3. **Install dependencies (yarn):**
    ```bash
-   npm install --legacy-peer-deps
+   yarn install
    ```
 
 4. **Start the development server:**
    ```bash
-   npm run develop
+   yarn develop
    ```
    Your site will be running at [http://localhost:8000](http://localhost:8000)
 
 5. **Clean the cache (if you run into issues):**
    ```bash
-   npm run clean
+   yarn clean
    ```
 
 ## 📦 Build for Production
 
 ```bash
-npm run build
+yarn build
 ```
+
+## ⚙️ Environment Variables
+
+Create a `.env.development` / `.env.production` (gitignored) with:
+
+```
+GATSBY_CONTACT_ENDPOINT=https://your-api/contact
+```
+
+If unset, the contact form falls back to the default endpoint baked into the code.
 
 ## 📝 Content Structure
 - Markdown content in `/content` (posts, projects, jobs, etc.)
@@ -51,12 +61,10 @@ npm run build
 - React 18
 - Styled-components
 - Markdown for content
-- Gatsby plugins for images, SEO, PWA, etc.
 
 ## ⚠️ Troubleshooting
-- **Node version errors:** Make sure you are using Node 18 (`node -v` should show `v18.x.x`).
-- **Image not showing:** Use static imports for images in `/src/images`, or place images in `/static` and reference by URL.
-- **Plugin errors:** Run `npm install --legacy-peer-deps` after changing Node versions or dependencies.
+- **Node version errors:** ensure `node -v` shows `v18.x.x`.
+- **Image not showing:** import images from `/src/images`, or place in `/static` and reference by URL.
 
 ## 📄 License
 [0BSD](./LICENSE)

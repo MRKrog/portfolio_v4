@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { 
-  Layout, 
-  Hero, 
-  About, 
-  Skills, 
-  Jobs, 
-  Showcase, 
-  Projects, 
-  Contact, 
-  CursorFollow 
+import {
+  Layout,
+  Hero,
+  About,
+  Skills,
+  Jobs,
+  Showcase,
+  Projects,
+  Contact,
+  CursorFollow,
 } from '@components';
 
 const StyledMainContainer = styled.main`
@@ -18,23 +18,29 @@ const StyledMainContainer = styled.main`
 `;
 
 const IndexPage = ({ location }) => {
-  // eslint-disable-next-line no-undef
-  const isDesktop = typeof window !== 'undefined' && window && window.innerWidth > 768;
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const update = () => setIsDesktop(window.innerWidth > 768);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
   return (
     <Layout location={location}>
       <StyledMainContainer className="fillHeight">
         <Hero />
         <About />
+        <Skills />
+        <Jobs />
         <Showcase />
         <Projects />
-        <Jobs />
-        <Contact />   
-        <Skills />
+        <Contact />
         {isDesktop && <CursorFollow />}
       </StyledMainContainer>
     </Layout>
-  )
+  );
 };
 
 IndexPage.propTypes = {

@@ -60,6 +60,10 @@ public
 
 # Mac files
 .DS_Store
+**/.DS_Store
+
+# Lockfile (using yarn)
+package-lock.json
 
 # Yarn
 yarn-error.log

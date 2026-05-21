@@ -14,15 +14,6 @@ const StyledSocialList = styled.ul`
   list-style: none;
 
 
-  &:after {
-    // content: '';
-    display: block;
-    width: 1px;
-    height: 90px;
-    margin: 0 auto;
-    background-color: var(--m-light-black);
-  }
-
   li {
     &:last-of-type {
       margin-bottom: 20px;
@@ -40,7 +31,6 @@ const StyledSocialList = styled.ul`
       svg {
         width: 20px;
         height: 20px;
-        /* stroke: var(--m-light-black); */
       }
     }
   }

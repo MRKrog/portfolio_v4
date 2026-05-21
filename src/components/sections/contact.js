@@ -8,7 +8,9 @@ import { ContactForm } from '@components';
 const StyledContactSection = styled.section`
   max-width: 900px;
   margin: 0 auto 100px;
+  padding-top: 80px;
   text-align: center;
+  position: relative;
 
   h2 {
     top: 3rem;
@@ -21,6 +23,7 @@ const StyledContactSection = styled.section`
 
   @media (max-width: 768px) {
     margin: 0 auto 50px;
+    padding-top: 40px;
   }
 
   .contact-copy {

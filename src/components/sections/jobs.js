@@ -37,6 +37,10 @@ const Jobs = () => {
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
   const tabs = useRef([]);
+  const panelRefs = useRef([]);
+  jobsData.forEach((_, i) => {
+    panelRefs.current[i] = panelRefs.current[i] || React.createRef();
+  });
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -92,7 +96,7 @@ const Jobs = () => {
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
        
-      <h2 className="m-section-title">day job</h2>
+      <h2 className="m-section-title">experience</h2>
 
       <div className="inner">
         <div style={{ display: 'flex', width: '100%' }}>
@@ -122,15 +126,14 @@ const Jobs = () => {
             jobsData.map(({ node }, i) => {
               const { frontmatter = {}, html } = node || {};
               const { title, url, range, companyFull, skills } = frontmatter;
-              
-              const nodeRef = React.createRef(null)
+              const nodeRef = panelRefs.current[i];
 
               return (
-                <CSSTransition 
-                  key={i} 
+                <CSSTransition
+                  key={i}
                   nodeRef={nodeRef}
-                  in={activeTabId === i} 
-                  timeout={250} 
+                  in={activeTabId === i}
+                  timeout={250}
                   classNames="fade"
                 >
                   <StyledTabPanel

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { srConfig } from '@config';
@@ -6,7 +6,6 @@ import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 import { StyledProjectsSection, StyledProject } from './styles/projectsStyles';
-
 
 const Projects = () => {
   const data = useStaticQuery(graphql`
@@ -39,43 +38,22 @@ const Projects = () => {
     }
   `);
 
-  // console.log('data', data);
-
-  const [showMore, setShowMore] = useState(false);
-  const revealTitle = useRef(null);
-  const revealArchiveLink = useRef(null);
   const revealProjects = useRef([]);
+  const transitionRefs = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
 
-  // const [modalOpen, setModalOpen] = useState(false);
-  // const [carouselImages, setCarouselImages] = useState([]);
-
-  // const openCarousel = images => {
-  //   setCarouselImages(images || []);
-  //   setModalOpen(true);
-  // };
-  // const closeCarousel = () => {
-  //   setModalOpen(false);
-  //   setCarouselImages([]);
-  // };
-
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
-    }
-
-    sr.reveal(revealTitle.current, srConfig());
-    sr.reveal(revealArchiveLink.current, srConfig());
+    if (prefersReducedMotion) return;
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [prefersReducedMotion]);
 
   const GRID_LIMIT = 6;
   const projects = data.projects.edges.filter(({ node }) => node);
-  const firstSix = projects.slice(0, GRID_LIMIT);
-  const projectsToShow = showMore ? projects : firstSix;
+  const projectsToShow = projects.slice(0, GRID_LIMIT);
 
-  const myRefs = useRef(Array(projectsToShow.length).fill(null)); // Create an array of refs for CSSTransitions
+  projectsToShow.forEach((_, i) => {
+    transitionRefs.current[i] = transitionRefs.current[i] || React.createRef();
+  });
 
   const projectInner = node => {
     const { frontmatter, html } = node;
@@ -144,32 +122,27 @@ const Projects = () => {
           </>
         ) : (
           <TransitionGroup component={null}>
-            {projectsToShow &&
-              projectsToShow.map(({ node }, i) => (
-                <CSSTransition
-                  key={i}
-                  classNames="fadeup"
-                  timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
-                  exit={false}
-                  ref={el => (myRefs.current[i] = el)}>
-                  <StyledProject
-                    key={i}
-                    ref={el => (revealProjects.current[i] = el)}
-                    style={{
-                      transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
-                    }}>
-                    {projectInner(node)}
-                  </StyledProject>
-                </CSSTransition>
-              ))}
+            {projectsToShow.map(({ node }, i) => (
+              <CSSTransition
+                key={i}
+                nodeRef={transitionRefs.current[i]}
+                classNames="fadeup"
+                timeout={300}
+                exit={false}
+              >
+                <StyledProject
+                  ref={el => {
+                    transitionRefs.current[i].current = el;
+                    revealProjects.current[i] = el;
+                  }}
+                >
+                  {projectInner(node)}
+                </StyledProject>
+              </CSSTransition>
+            ))}
           </TransitionGroup>
         )}
       </ul>
-
-      {/* <button className="more-button" onClick={() => setShowMore(!showMore)}>
-        Show {showMore ? 'Less' : 'More'}
-      </button> */}
-
     </StyledProjectsSection>
   );
 };

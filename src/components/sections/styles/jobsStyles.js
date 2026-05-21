@@ -8,8 +8,9 @@ export const StyledJobsSection = styled.section`
     z-index: -1;
     left: 0;
     top: 5rem;
-    font-size: clamp(2rem, 28vw, 13rem);
-    letter-spacing: -5px;
+    width: 100%;
+    font-size: clamp(2rem, 18vw, 9.5rem);
+    letter-spacing: -3px;
   }
 
   .inner {
